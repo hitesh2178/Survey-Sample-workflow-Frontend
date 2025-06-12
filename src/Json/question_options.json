@@ -23,6 +23,402 @@
         { "text": "Assign sections with a final deadline, addressing issues only as they arise.", "weight": 2 },
         { "text": "Have team members work independently and review the report after submission.", "weight": 2 }
       ]
-    }
+    },
+    {
+      "code": "LT3",
+      "spectrum": "Detail - Oriented vs Flexible Approach",
+      "range": "Sense of Responsibility",
+      "question": "You discover a minor process violation in a project with strict compliance. It wouldn't affect the immediate outcome but could have future implications. What do you do?",
+      "options": [
+        { "text": "Report and correct it immediately, document the incident and ensure it doesn't reoccur.", "weight": 3 },
+        { "text": "Report and correct it, then monitor for future issues.", "weight": 3 },
+        { "text": "Focus on meeting the deadline while keeping an eye on potential problems.", "weight": 2 },
+        { "text": "Note the violation for future reference and stay observant for related issues.", "weight": 1 }
+      ]
+    },
+    {
+      "code": "LT4",
+      "spectrum": "Detail - Oriented vs Flexible Approach",
+      "range": "Achievement Striving",
+      "question": "After completing a critical project, you notice areas for improvement. How do you handle it?",
+      "options": [
+        { "text": "Conduct a detailed review, set specific goals, and seek feedback and training for future improvements.", "weight": 4 },
+        { "text": "Review, set realistic goals, and implement minor changes for the next project.", "weight": 3 },
+        { "text": "Recognize growth areas while emphasizing achievements, keeping goals broad and forward-looking.", "weight": 2 },
+        { "text": "Acknowledge the project's completion and focus on future tasks, noting improvements informally.", "weight": 1 }
+      ]
+    },
+    {
+      "code": "LT5",
+      "spectrum": "Detail - Oriented vs Flexible Approach",
+      "range": "Self-Discipline",
+      "question": "You've started a personal development course, but your work responsibilities have suddenly increased. How do you manage your time?",
+      "options": [
+        { "text": "Follow a strict schedule to balance both work and study, adjusting personal time if needed.", "weight": 2 },
+        { "text": "Reduce study time, prioritizing work but still making progress on the course.", "weight": 3 },
+        { "text": "Focus on work for now and make a plan to catch up on the course later.", "weight": 3 },
+        { "text": "Temporarily deprioritize the course and resume it once work stabilizes.", "weight": 2 }
+      ]
+    },
+    {
+      "code": "LT6",
+      "spectrum": "Detail - Oriented vs Flexible Approach",
+      "range": "Deliberateness",
+      "question": "How would you handle a situation where a presentation for upper management has errors and inconsistencies close to the deadline?",
+      "options": [
+        { "text": "Correct all errors, polish the presentation, and rehearse with the team.", "weight": 3 },
+        { "text": "Fix major issues, review carefully, and do a brief team rehearsal.", "weight": 4 },
+        { "text": "Fix key issues to ensure clarity, even if rehearsal time is limited.", "weight": 3 },
+        { "text": "Make minimal corrections and skip rehearsal, assuming it’s good enough.", "weight": 1 }
+      ]
+    },
+    {
+      "code": "LT7",
+      "spectrum": "Detail - Oriented vs Flexible Approach",
+      "range": "Assertiveness",
+      "question": "How do you handle a team member consistently missing deadlines during a critical project phase?",
+      "options": [
+        { "text": "Have a one-on-one discussion to understand the delays, give feedback, set clear expectations, and create a support plan.", "weight": 4 },
+        { "text": "Discuss the missed deadlines, provide feedback, emphasize the importance of deadlines, and monitor progress.", "weight": 3 },
+        { "text": "Bring up the topic in a team meeting, encouraging improvement without focusing on specifics.", "weight": 1 },
+        { "text": "Let the team member handle their delays, stepping in only if the issue continues.", "weight": 1 }
+      ]
+    },
+    {
+      "code": "LT8",
+      "spectrum": "Independent Thinker vs Collaborative Mindset",
+      "range": "Trust in others",
+      "question": "How do you delegate a task to a team member?",
+      "options": [
+        { "text": "Give them autonomy, offer guidance as needed, and trust their decisions.", "weight": 3 },
+        { "text": "Check in with the team regularly to track progress and advise on issues.", "weight": 3 },
+        { "text": "Review their work frequently and provide detailed instructions.", "weight": 2 },
+        { "text": "Provide close oversight and guidance on key decisions to ensure the task meets expectations.", "weight": 2 }
+      ]
+    },
+    {
+      "code": "LT9",
+      "spectrum": "Independent Thinker vs Collaborative Mindset",
+      "range": "Sincerity",
+      "question": "A senior executive inquires about the progress of a particular project. Some team members are behind, but the project is still on track. How do you respond?",
+      "options": [
+        { "text": "Assure the project is on track and focus on the team’s dedication, avoiding details on delays.", "weight": 3 },
+        { "text": "Highlight the challenges but emphasize the team’s efforts and solutions.", "weight": 3 },
+        { "text": "Report the progress and mention delays while highlighting the mitigation steps taken.", "weight": 3 },
+        { "text": "State the project is on track, acknowledge minor delays, and express confidence in meeting the deadline.", "weight": 3 }
+      ]
+    },
+    {
+      "code": "LT10",
+      "spectrum": "Independent Thinker vs Collaborative Mindset",
+      "range": "Altruism",
+      "question": "A team member is struggling with a complex task and falling behind. What do you do?",
+      "options": [
+        { "text": "Offer support and guidance to help them complete the task.", "weight": 3 },
+        { "text": "Provide advice and suggest they seek help from peers.", "weight": 3 },
+        { "text": "Review their work briefly and suggest improvements.", "weight": 3 },
+        { "text": "Prioritize your tasks while trusting the team member to manage challenges and ask for help if needed.", "weight": 1 }
+      ]
+    },
+    {
+      "code": "LT11",
+      "spectrum": "Independent Thinker vs Collaborative Mindset",
+      "range": "Compliance",
+      "question": "How do you respond to a team member requesting a deadline extension due to unforeseen circumstances?",
+      "options": [
+        { "text": "Discuss the reasons, and set a new deadline that ensures project quality.", "weight": 4 },
+        { "text": "Offer a slight extension, stressing the importance of deadlines.", "weight": 2 },
+        { "text": "Reinforce the importance of the timeline and note that adjustments won’t be possible.", "weight": 2 },
+        { "text": "Offer assistance to meet the deadline, stressing the importance of the timeline.", "weight": 3 }
+      ]
+    },
+    {
+      "code": "LT12",
+      "spectrum": "Independent Thinker vs Collaborative Mindset",
+      "range": "Modesty",
+      "question": "After a successful project, how do you communicate the results to your superior?",
+      "options": [
+        { "text": "Highlight the team’s contributions in detail, emphasizing their effort and collaboration.", "weight": 4 },
+        { "text": "Acknowledge the team’s role while briefly mentioning your guidance and leadership.", "weight": 3 },
+        { "text": "Mention both your leadership and the team’s contributions, focusing more on your role in the success.", "weight": 2 },
+        { "text": "Highlight your role in the success, briefly noting the team’s contributions.", "weight": 1 }
+      ]
+    },
+    {
+    "code": "LT13",
+    "spectrum": "Independent Thinker vs Collaborative Mindset",
+    "range": "Sympathy",
+    "question": "A top-performing team member is struggling with personal issues affecting their work. How do you handle it?",
+    "options": [
+      { "text": "Show concern, offer support, and discuss ways to help them manage their workload.", "weight": 4 },
+      { "text": "Acknowledge their situation and performance history while discussing ways to maintain work quality.", "weight": 3 },
+      { "text": "Focus on finding a balance between their personal challenges and work expectations.", "weight": 2 },
+      { "text": "Emphasize maintaining performance, staying goal-oriented, and acknowledging current challenges.", "weight": 1 }
+    ]
+  },
+  {
+    "code": "LT14",
+    "spectrum": "Independent Thinker vs Collaborative Mindset",
+    "range": "Sociability",
+    "question": "You’ve just started your role as a manager, and you notice that team members often eat lunch at their desks. What do you do?",
+    "options": [
+      { "text": "Invite the team to a lunch outing to encourage social interaction and team bonding.", "weight": 3 },
+      { "text": "Send a group email suggesting that everyone should start taking their breaks together.", "weight": 4 },
+      { "text": "Continue with your routine and engage with team members as and when an opportunity arises.", "weight": 2 },
+      { "text": "Observe team preferences and stay open to suggestions when they’re ready to share.", "weight": 2 }
+    ]
+  },
+  {
+    "code": "BS1",
+    "spectrum": "Open Communication",
+    "range": "Self-reflection",
+    "question": "You've noticed recent team meetings wrap up quickly with little debate. What's your take?",
+    "options": [
+      { "text": "Think of ways to facilitate meetings to draw out differing views.", "weight": 3 },
+      { "text": "Work on encouraging more discussions and input from the team.", "weight": 3 },
+      { "text": "Think that the team is on the same page and is in agreement.", "weight": 2 },
+      { "text": "Assume the team is aligned and ready to move forward, with no further discussion needed.", "weight": 2 }
+    ]
+  },
+  {
+    "code": "BS2",
+    "spectrum": "Open Communication",
+    "range": "Feedback/Accountability",
+    "question": "After a project debrief, your team seems hesitant to give you feedback on your communication.",
+    "options": [
+      { "text": "Set up an anonymous feedback channel to get honest input and adjust communication accordingly.", "weight": 3 },
+      { "text": "Ask for direct feedback and express willingness to improve based on their input.", "weight": 3 },
+      { "text": "Invite feedback and respect the team's choice if they don’t share immediately.", "weight": 3 },
+      { "text": "Interpret the lack of feedback as clear communication and continue with your approach.", "weight": 2 }
+    ]
+  },
+  {
+    "code": "BS3",
+    "spectrum": "Open Communication",
+    "range": "Mitigation",
+    "question": "In team discussions, some members stay quiet while others dominate. You're concerned about missing valuable input.",
+    "options": [
+      { "text": "Talk to quieter members individually to understand and support them.", "weight": 3 },
+      { "text": "Encourage balanced participation by inviting different members to share.", "weight": 3 },
+      { "text": "Keep the current structure but ask for feedback on improving contributions.", "weight": 3 },
+      { "text": "Assume quieter members agree and choose to speak up if necessary.", "weight": 3 }
+    ]
+  },
+  {
+    "code": "BS4",
+    "spectrum": "Sensitivity towards others",
+    "range": "Self-reflection",
+    "question": "A team member has been quieter in meetings, and their recent work is below their usual standards. How do you interpret this?",
+    "options": [
+      { "text": "Check in with them privately to see if something is wrong.", "weight": 4 },
+      { "text": "Casually ask how they're doing and if they need anything.", "weight": 3 },
+      { "text": "Observe them while giving them space and stepping in if necessary.", "weight": 3 },
+      { "text": "Give them time to recover, assuming they'll get back on track soon.", "weight": 2 }
+    ]
+  },
+  {
+    "code": "BS5",
+    "spectrum": "Sensitivity towards others",
+    "range": "Feedback/Accountability",
+    "question": "A team member says they're uncomfortable with how feedback is provided in meetings. How do you respond?",
+    "options": [
+      { "text": "Discuss their discomfort and adjust the process to make it better for everyone.", "weight": 3 },
+      { "text": "Listen and consider how we can improve the feedback process.", "weight": 3 },
+      { "text": "Note their feedback and observe before making any changes.", "weight": 3 },
+      { "text": "Acknowledge their concern and reflect on the feedback before making adjustments.", "weight": 3 }
+    ]
+  },
+  {
+    "code": "BS6",
+    "spectrum": "Sensitivity towards others",
+    "range": "Mitigation",
+    "question": "A team member is visibly struggling but hasn't explicitly shared details. How would you approach this situation?",
+    "options": [
+      { "text": "Offer to discuss their needs and provide resources or flexibility if they are open to it.", "weight": 3 },
+      { "text": "Share general support resources and let them decide if they would like to reach out.", "weight": 3 },
+      { "text": "Make occasional general offers of support without pressing for details.", "weight": 2 },
+      { "text": "Give them space to reach out when ready while fostering a supportive team atmosphere.", "weight": 2 }
+    ]
+  },
+  {
+    "code": "BS7",
+    "spectrum": "Reliable",
+    "range": "Self-reflection",
+    "question": "How would you handle tasks that are delayed on your end and affect your team?",
+    "options": [
+      { "text": "Assess and improve task management to prevent future delays.", "weight": 3 },
+      { "text": "Review and adjust priorities to better support the team.", "weight": 3 },
+      { "text": "Focus efforts to get things back on track quickly and minimize impact.", "weight": 3 },
+      { "text": "Acknowledge the delays, focus on resolving the issue, and avoid further disruption.", "weight": 3 }
+    ]
+  },
+  {
+    "code": "BS8",
+    "spectrum": "Reliable",
+    "range": "Feedback/Accountability",
+    "question": "A project you led missed key deadlines. A team member says the schedule was unrealistic. How do you respond?",
+    "options": [
+      { "text": "Review the schedule with team members and adjust future schedules to be more realistic.", "weight": 3 },
+      { "text": "Consider their feedback and work on improving future project timelines.", "weight": 3 },
+      { "text": "Accept the feedback and work with the team to refine schedules for future projects.", "weight": 3 },
+      { "text": "Note the feedback and monitor for recurring issues before making changes.", "weight": 3 }
+    ]
+  },
+  {
+    "code": "BS9",
+    "spectrum": "Reliable",
+    "range": "Mitigation",
+    "question": "Some unexpected technical issues arise during a project. What will you do to keep the project on track?",
+    "options": [
+      { "text": "Explore solutions with the team and consider alternatives to minimize delays.", "weight": 3 },
+      { "text": "Address the issues, monitor progress, and keep stakeholders updated.", "weight": 3 },
+      { "text": "Address issues as and when they arise, with a timeline review to follow.", "weight": 2 },
+      { "text": "Focus on planned tasks and keep stakeholders informed of potential timeline impacts.", "weight": 3 }
+    ]
+  },
+  {
+    "code": "BS10",
+    "spectrum": "Collective Decision Making",
+    "range": "Self-reflection",
+    "question": "You notice the team often agrees with the first idea proposed. How do you interpret this?",
+    "options": [
+      { "text": "Ensure the team explores other ideas before deciding and encourage more brainstorming.", "weight": 3 },
+      { "text": "Create an environment where team members feel comfortable challenging the first idea and suggesting alternatives.", "weight": 3 },
+      { "text": "Experiencing quick agreement might indicate that the first idea aligns well with the team’s views.", "weight": 3 },
+      { "text": "See quick agreement as a sign that the team is working well together.", "weight": 2 }
+    ]
+  },
+  {
+    "code": "BS11",
+    "spectrum": "Collective Decision Making",
+    "range": "Feedback/Accountability",
+    "question": "Some team members feel their contributions were undervalued in a recent decision. How do you respond?",
+    "options": [
+      { "text": "Hold a team meeting to discuss the feedback and improve the decision-making process.", "weight": 3 },
+      { "text": "Review the process with the team to identify gaps and enhance inclusion.", "weight": 3 },
+      { "text": "Thank the team and invite them to share detailed concerns individually.", "weight": 3 },
+      { "text": "Acknowledge the feedback and assure the team it will inform future decisions.", "weight": 3 }
+    ]
+  },
+  {
+    "code": "BS12",
+    "spectrum": "Collective Decision Making",
+    "range": "Mitigation",
+    "question": "How would you address differing opinions in a team decision-making process?",
+    "options": [
+      { "text": "Facilitate a discussion to integrate the best ideas from everyone.", "weight": 3 },
+      { "text": "Plan a follow-up meeting to make sure everyone's views are considered.", "weight": 3 },
+      { "text": "Acknowledge differences, decide based on the majority view, and address concerns separately.", "weight": 3 },
+      { "text": "Proceed with the decision and encourage the team to share input or concerns as the project progresses.", "weight": 3 }
+    ]
+  },
+  {
+    "code": "BS13",
+    "spectrum": "Reasonable Expectations",
+    "range": "Self-reflection",
+    "question": "A team member is concerned that project expectations are too high. How do you respond?",
+    "options": [
+      { "text": "Review and adjust expectations if needed to make them more realistic.", "weight": 3 },
+      { "text": "Investigate their concerns and consider aligning expectations with project needs.", "weight": 3 },
+      { "text": "Acknowledge the ambitious goals but express confidence in the team's ability to meet them.", "weight": 3 },
+      { "text": "Emphasize high standards and encourage the team to tackle the challenge with confidence and determination.", "weight": 2 }
+    ]
+  },
+  {
+    "code": "BS14",
+    "spectrum": "Reasonable Expectations",
+    "range": "Feedback/Accountability",
+    "question": "How do you address team members' uncertainty about their roles in a new project?",
+    "options": [
+      { "text": "Hold a meeting to clarify roles and expectations.", "weight": 3 },
+      { "text": "Review tasks and offer more guidance.", "weight": 3 },
+      { "text": "Offer support if concerns arise, trusting the team to adapt.", "weight": 3 },
+      { "text": "Provide further clarification or support if needed.", "weight": 3 }
+    ]
+  },
+  {
+    "code": "BS15",
+    "spectrum": "Reasonable Expectations",
+    "range": "Mitigation",
+    "question": "During a project review, you find the initial goals for the team were too ambitious considering their workload and abilities. What would you do next?",
+    "options": [
+      { "text": "Revise the goals significantly, offer support/resources, and set up regular check-ins.", "weight": 3 },
+      { "text": "Adjust the goals slightly and provide extra support/resources.", "weight": 4 },
+      { "text": "Acknowledge the need for possible changes and discuss strategies or support with the team.", "weight": 3 },
+      { "text": "Maintain the goals, encourage creative solutions, and offer support as needed.", "weight": 3 }
+    ]
+  },
+  {
+    "code": "ER1",
+    "spectrum": "Natural Reaction",
+    "range": "Anxiety",
+    "question": "How do you handle an important presentation when key team members are suddenly unavailable?",
+    "options": [
+      { "text": "Evaluate available content, reorganize, and confidently deliver the presentation.", "weight": 3 },
+      { "text": "Work on the presentation and inform the client about minor adjustments.", "weight": 3 },
+      { "text": "Be mindful of any missing elements and consider the possibility of an extension if needed.", "weight": 3 },
+      { "text": "Reassess the situation and address the presentation challenges as best as you can.", "weight": 3 }
+    ]
+  },
+  {
+    "code": "ER2",
+    "spectrum": "Natural Reaction",
+    "range": "Angry Hostility",
+    "question": "During a team meeting, a junior employee repeatedly interrupts you while you're explaining a critical point about an ongoing project. You feel annoyed as this disrupts the flow of the discussion. How do you handle the situation?",
+    "options": [
+      { "text": "Request the team to hold their thoughts until you finish and then invite them to share their input.", "weight": 4 },
+      { "text": "Politely remind the employee that it's important to let others speak and continue with your explanation.", "weight": 3 },
+      { "text": "Sigh or make a dismissive gesture, then proceed with your point.", "weight": 1 },
+      { "text": "Redirect the discussion, emphasize staying on track, and continue your explanation.", "weight": 1 }
+    ]
+  },
+  {
+    "code": "ER3",
+    "spectrum": "Natural Reaction",
+    "range": "Moodiness/Contentment",
+    "question": "You’ve just received some unexpected news—either very good or bad—right before a crucial presentation to your team. How do you handle it?",
+    "options": [
+      { "text": "Not let yourself be affected by the news while staying focused on the presentation.", "weight": 3 },
+      { "text": "It won’t affect your work, but it will still linger on your mind.", "weight": 2 },
+      { "text": "The news might slightly distract you, but you try to push through and stay on task.", "weight": 3 },
+      { "text": "The news affects your focus, making it hard to concentrate during the presentation.", "weight": 3 }
+    ]
+  },
+  {
+    "code": "ER4",
+    "spectrum": "Natural Reaction",
+    "range": "Self-Consciousness",
+    "question": "How do you handle a critical and high-visibility project that senior leaders would be observing?",
+    "options": [
+      { "text": "Approach the project confidently, deliver quality results, and stay calm regardless of their presence.", "weight": 3 },
+      { "text": "Recognize the pressure but stay focused on the project while feeling some self-consciousness.", "weight": 3 },
+      { "text": "Be concerned about visibility but remain focused on delivering results.", "weight": 3 },
+      { "text": "Senior leaders' presence heightens your self-awareness, causing occasional second-guessing as you aim for success.", "weight": 3 }
+    ]
+  },
+  {
+    "code": "ER5",
+    "spectrum": "Natural Reaction",
+    "range": "Self-Indulgence",
+    "question": "During a team meeting, you are offered an opportunity to join a high-stakes project that requires extra hours but promises great rewards. How do you respond?",
+    "options": [
+      { "text": "Decline the project, recognizing that it might stretch your focus too thin, considering your current responsibilities.", "weight": 3 },
+      { "text": "Accept the project and delegate your current tasks to other team members.", "weight": 2 },
+      { "text": "Join the project and inform your team that they will need to handle your workload.", "weight": 3 },
+      { "text": "Commit to the new project while managing your regular tasks with confidence.", "weight": 3 }
+    ]
+  },
+  {
+    "code": "ER6",
+    "spectrum": "Natural Reaction",
+    "range": "Sensitivity to Stress",
+    "question": "Your team is behind on a critical project with a tight deadline. The client expects frequent updates, and there’s pressure from the client and senior management. How would you handle it?",
+    "options": [
+      { "text": "Stay organized, address issues, communicate regularly, and motivate the team.", "weight": 3 },
+      { "text": "Manage your workload, keep the client updated, and work with the team to stay on track.", "weight": 3 },
+      { "text": "Handle challenges, though updates and coordination may occasionally be less frequent.", "weight": 3 },
+      { "text": "Focus on the team’s progress, manage competing demands, and provide updates without compromising quality.", "weight": 2 }
+    ]
+  }
   ]
 }
