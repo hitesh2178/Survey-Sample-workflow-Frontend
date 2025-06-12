@@ -1,0 +1,60 @@
+.strength-container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 40px 30px;
+  background: #f0f4f8;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.strength-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 28px;
+  color: #004080;
+}
+
+.strength-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.strength-table th,
+.strength-table td {
+  padding: 14px 16px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.strength-table th {
+  background-color: #004080;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.strength-table tr:hover {
+  background-color: #e6f0ff;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .strength-container {
+    margin: 30px 15px;
+    padding: 25px 20px;
+  }
+
+  .strength-table th,
+  .strength-table td {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+}

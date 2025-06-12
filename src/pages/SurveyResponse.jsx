@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import '../Styles/SurveyResponse.css';
+import StrengthTable from '../components/strengthTable';
+import BlindspotRankingTable from '../components/BlindspotRankingTable';
 
 const SurveyResponse = () => {
   const [responses, setResponses] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage, setRecordsPerPage] = useState(5); // Changed from 3 to 5
+  const [recordsPerPage, setRecordsPerPage] = useState(5);
 
   const calculateValues = (res) => {
     const positive = (0.6 * res.option1) + (0.4 * res.option2);
@@ -19,8 +21,7 @@ const SurveyResponse = () => {
       return [];
     }
 
-    // eslint-disable-next-line no-unused-vars
-    return localStorageData.answers.map((answer, index) => {
+    return localStorageData.answers.map((answer) => {
       // Create the base response object
       const baseResponse = {
         id: `${localStorageData.respondent_id}_${answer.question_code}`,
@@ -44,6 +45,39 @@ const SurveyResponse = () => {
     });
   };
 
+  const saveToLocalStorage = (data) => {
+    try {
+      // Create enhanced data structure with calculated values
+      const enhancedData = {
+        respondent_id: data[0]?.respondentId || '',
+        answers: data.map(response => ({
+          question_code: response.questionCode,
+          spectrum: response.spectrum,
+          range: response.range,
+          question: response.question,
+          selected_index: response.selectedOption,
+          selected_text: response.selectedAnswer,
+          options: response.options.map((text, index) => ({
+            text,
+            weight: response[`option${index + 1}`]
+          })),
+          // Add calculated values to the stored data
+          calculated_values: {
+            positive: response.positive,
+            negative: response.negative,
+            score: response.score,
+            percentage: response.percentage
+          }
+        }))
+      };
+
+      localStorage.setItem('surveyResponses', JSON.stringify(enhancedData));
+      console.log('Enhanced data saved to localStorage:', enhancedData);
+    } catch (error) {
+      console.error('Error saving enhanced data to localStorage:', error);
+    }
+  };
+
   const loadFromLocalStorage = () => {
     try {
       const storedData = localStorage.getItem('surveyResponses');
@@ -51,7 +85,40 @@ const SurveyResponse = () => {
         console.log('Raw localStorage data:', storedData);
         const parsedData = JSON.parse(storedData);
         console.log('Parsed data:', parsedData);
-        const transformedData = transformLocalStorageData(parsedData);
+        
+        // Check if data already has calculated values
+        const hasCalculatedValues = parsedData.answers?.[0]?.calculated_values;
+        
+        let transformedData;
+        if (hasCalculatedValues) {
+          // Use existing calculated values if available
+          transformedData = parsedData.answers.map((answer) => ({
+            id: `${parsedData.respondent_id}_${answer.question_code}`,
+            respondentId: parsedData.respondent_id.toString(),
+            questionCode: answer.question_code,
+            spectrum: answer.spectrum,
+            range: answer.range,
+            question: answer.question,
+            selectedOption: answer.selected_index,
+            selectedAnswer: answer.selected_text,
+            options: answer.options.map(opt => opt.text),
+            option1: answer.options[0]?.weight || 1,
+            option2: answer.options[1]?.weight || 1,
+            option3: answer.options[2]?.weight || 1,
+            option4: answer.options[3]?.weight || 1,
+            // Use stored calculated values
+            positive: answer.calculated_values.positive,
+            negative: answer.calculated_values.negative,
+            score: answer.calculated_values.score,
+            percentage: answer.calculated_values.percentage
+          }));
+        } else {
+          // Calculate values for legacy data
+          transformedData = transformLocalStorageData(parsedData);
+          // Save the enhanced data back to localStorage
+          saveToLocalStorage(transformedData);
+        }
+        
         console.log('Transformed data:', transformedData);
         setResponses(transformedData);
       } else {
@@ -75,6 +142,9 @@ const SurveyResponse = () => {
     const recalculated = calculateValues(updatedResponses[actualIndex]);
     updatedResponses[actualIndex] = recalculated;
     setResponses(updatedResponses);
+    
+    // Save updated data to localStorage
+    saveToLocalStorage(updatedResponses);
   };
 
   const getPercentageClass = (percentage) => {
@@ -102,7 +172,7 @@ const SurveyResponse = () => {
 
   const handleRecordsPerPageChange = (newRecordsPerPage) => {
     setRecordsPerPage(newRecordsPerPage);
-    setCurrentPage(1); // Reset to first page when changing records per page
+    setCurrentPage(1);
   };
 
   const getPageNumbers = () => {
@@ -130,6 +200,7 @@ const SurveyResponse = () => {
   };
 
   return (
+    <>
     <div className="survey-response-container">
       <div className="survey-response-card">
         <div className="survey-response-header">
@@ -419,6 +490,15 @@ const SurveyResponse = () => {
         )}
       </div>
     </div>
+    <div>
+        {/* Pass the complete responses data with calculated values to StrengthTable */}
+        <StrengthTable surveyData={responses} />
+      </div>
+    <div>
+        {/* Pass the complete responses data with calculated values to StrengthTable */}
+        <BlindspotRankingTable surveyData={responses} />
+      </div>
+      </>
   );
 };
 
