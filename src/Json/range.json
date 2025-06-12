@@ -1,0 +1,27 @@
+{
+  "ranges": [
+    { "id": 1, "text": "Sense of Competence" },
+    { "id": 2, "text": "Orderliness" },
+    { "id": 3, "text": "Sense of Responsibility" },
+    { "id": 4, "text": "Achievement Striving" },
+    { "id": 5, "text": "Self-Discipline" },
+    { "id": 6, "text": "Deliberateness" },
+    { "id": 7, "text": "Assertiveness" },
+    { "id": 8, "text": "Trust in others" },
+    { "id": 9, "text": "Sincerity" },
+    { "id": 10, "text": "Altruism" },
+    { "id": 11, "text": "Compliance" },
+    { "id": 12, "text": "Modesty" },
+    { "id": 13, "text": "Sympathy" },
+    { "id": 14, "text": "Sociability" },
+    { "id": 15, "text": "Self-reflection" },
+    { "id": 16, "text": "Feedback/Accountability" },
+    { "id": 17, "text": "Mitigation" },
+    { "id": 18, "text": "Anxiety" },
+    { "id": 19, "text": "Angry Hostility" },
+    { "id": 20, "text": "Moodiness/Contentment" },
+    { "id": 21, "text": "Self-Consciousness" },
+    { "id": 22, "text": "Self-Indulgence" },
+    { "id": 23, "text": "Sensitivity to Stress" }
+  ]
+}

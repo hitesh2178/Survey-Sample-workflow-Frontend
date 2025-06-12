@@ -1,0 +1,84 @@
+{
+  "recommendations": [
+    {
+      "id": 1,
+      "topics": [
+        "Introduction to Leadership Styles (for broader leadership perspective)",
+        "Delegation and Empowerment",
+        "Decision Making & Problem Solving"
+      ]
+    },
+    {
+      "id": 2,
+      "topics": [
+        "Time Management and Prioritization",
+        "Goal Setting",
+        "Decision Making & Problem Solving"
+      ]
+    },
+    {
+      "id": 3,
+      "topics": [
+        "Leading by Example (for foundational principles)",
+        "Decision Making & Problem Solving",
+        "Team Management & Leadership (for communication)"
+      ]
+    },
+    {
+      "id": 4,
+      "topics": [
+        "Time Management and Prioritization",
+        "Delegation and Empowerment",
+        "Goal Setting"
+      ]
+    },
+    {
+      "id": 5,
+      "topics": [
+        "Time Management and Prioritization",
+        "Leading by Example (for accountability)",
+        "Goal Setting (for structure)"
+      ]
+    },
+    {
+      "id": 6,
+      "topics": [
+        "Team Management & Leadership",
+        "Giving Constructive Feedback",
+        "Conflict Resolution and Negotiation"
+      ]
+    },
+    {
+      "id": 7,
+      "topics": [
+        "Communication and Active Listening",
+        "Team Management & Leadership",
+        "Conflict Resolution and Negotiation"
+      ]
+    },
+    {
+      "id": 8,
+      "topics": [
+        "Leading by Example (for foundational principles)",
+        "Team Management & Leadership",
+        "Emotional Intelligence"
+      ]
+    },
+    {
+      "id": 9,
+      "topics": [
+        "Team Management & Leadership",
+        "Delegation and Empowerment",
+        "Communication and Active Listening"
+      ]
+    },
+    {
+      "id": 10,
+      "topics": [
+        "Team Management & Leadership",
+        "Emotional Intelligence",
+        "Leading by Example (for communication and empathy)"
+      ]
+    }
+  ]
+}

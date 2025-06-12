@@ -1,0 +1,84 @@
+.dashboard-container {
+  max-width: 1200px;
+  width: 95%;
+  margin: 40px auto;
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9fbfd;
+  color: #222;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0, 64, 128, 0.12);
+}
+
+.dashboard-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #004080;
+  margin-bottom: 30px;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  justify-items: center;
+}
+
+.dashboard-card {
+  background: #fff;
+  width: 100%;
+  max-width: 240px;
+  min-height: 130px;
+  padding: 20px 15px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 64, 128, 0.2);
+}
+
+.dashboard-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0073e6;
+  margin-bottom: 10px;
+}
+
+.dashboard-card p {
+  font-size: 32px;
+  font-weight: 700;
+  color: #004080;
+  margin: 0;
+  letter-spacing: 0.08em;
+}
+
+.users-card {
+  border-top: 4px solid #0073e6;
+}
+
+.roles-card {
+  border-top: 4px solid #00a854;
+}
+
+/* Responsive Layout */
+@media (max-width: 992px) {
+  .cards-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-card {
+    max-width: 100%;
+  }
+}

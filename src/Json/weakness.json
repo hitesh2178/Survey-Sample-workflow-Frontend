@@ -1,0 +1,44 @@
+{
+  "weaknesses": [
+    {
+      "id": 1,
+      "text": "May struggle with flexibility, resisting unexpected changes and potentially micromanaging tasks."
+    },
+    {
+      "id": 2,
+      "text": "Occasionally, you may struggle with disruptions, overlook details, or need to refine your organizational systems."
+    },
+    {
+      "id": 3,
+      "text": "Inconsistency may arise, and you might find it difficult to commit to one approach, needing effort to shift styles appropriately."
+    },
+    {
+      "id": 4,
+      "text": "May overlook important details, struggle with precision, and would need stronger planning and organizational skills."
+    },
+    {
+      "id": 5,
+      "text": "Consistently disorganized, frequently miss deadlines, and are perceived as unreliable due to a lack of structure and follow-through."
+    },
+    {
+      "id": 6,
+      "text": "Shys away from tough decisions, prioritizing harmony over efficiency. You are likely to be overly influenced by others."
+    },
+    {
+      "id": 7,
+      "text": "May struggle to assert your ideas or avoid conflict, limiting your influence."
+    },
+    {
+      "id": 8,
+      "text": "Inconsistent approach, often you may face difficulty choosing between collaboration and independence."
+    },
+    {
+      "id": 9,
+      "text": "May overlook input, struggle with collaboration. You are likely hesitate to delegate."
+    },
+    {
+      "id": 10,
+      "text": "Deprioritizes collaboration, you often disregard input from others, and can be perceived as uncooperative."
+    }
+  ]
+}

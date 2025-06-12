@@ -1,0 +1,138 @@
+/* Container for login/signup pages */
+.auth-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 40px 30px;
+  background: #f0f4f8;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Page title */
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 28px;
+  color: #004080;
+}
+
+/* Form styling */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.auth-form label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #004080;
+}
+
+/* Input fields (text, email, password) */
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 2px solid #d1d9e6;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+.auth-form input[type="text"]:focus,
+.auth-form input[type="email"]:focus,
+.auth-form input[type="password"]:focus {
+  border-color: #004080;
+  outline: none;
+}
+
+/* Custom styled select dropdown */
+.auth-form select.custom-select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 2px solid #d1d9e6;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  appearance: none;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M1 1L5 5L9 1' stroke='%23777' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 10px 6px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.auth-form select.custom-select:focus {
+  border-color: #004080;
+  outline: none;
+  box-shadow: 0 0 6px #a4c0f9;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M1 1L5 5L9 1' stroke='%234a90e2' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+}
+
+/* Submit button styles (Login and Signup) */
+.auth-form button {
+  background-color: #004080;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.auth-form button:hover {
+  background-color: #002d66;
+}
+
+/* Signup button specific styles */
+.auth-form.signup-button {
+  background-color: #008000; /* green */
+}
+
+.auth-form.signup-button:hover {
+  background-color: #005900;
+}
+
+/* Link below form */
+.auth-link {
+  margin-top: 18px;
+  font-size: 14px;
+  text-align: center;
+  color: #004080;
+}
+
+.auth-link a {
+  color: #0073e6;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.auth-link a:hover {
+  color: #004080;
+  text-decoration: underline;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .auth-container {
+    margin: 30px 15px;
+    padding: 30px 20px;
+  }
+
+  .auth-form button {
+    font-size: 16px;
+  }
+}

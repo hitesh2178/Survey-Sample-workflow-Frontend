@@ -1,0 +1,66 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #004080;
+  padding: 12px 24px;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Left and right containers for nav items */
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* uniform spacing */
+}
+
+/* Logo styling */
+.nav-logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffd700; /* golden/yellow color for emphasis */
+  user-select: none;
+  cursor: default;
+  margin-right: 24px;
+  letter-spacing: 2px;
+  font-family: 'Segoe UI Black', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Links inside nav */
+.nav-left a,
+.nav-right a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+  text-decoration: underline;
+  color: #a4c0f9;
+}
+
+/* User info text */
+.user-info {
+  font-weight: 700;
+  margin-right: 12px;
+}
+
+/* Logout button */
+.nav-right button {
+  background-color: #ff4d4f;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.nav-right button:hover {
+  background-color: #cc0000;
+}

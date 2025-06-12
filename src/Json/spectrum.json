@@ -1,0 +1,12 @@
+{
+  "spectrums": [
+    { "id": 1, "text": "Meticulous vs Negligent" },
+    { "id": 2, "text": "Individual vs Community" },
+    { "id": 3, "text": "Open Communication" },
+    { "id": 4, "text": "Sensitivity towards others" },
+    { "id": 5, "text": "Reliable" },
+    { "id": 6, "text": "Collective Decision Making" },
+    { "id": 7, "text": "Reasonable Expectations" },
+    { "id": 8, "text": "Natural Reaction" }
+  ]
+}

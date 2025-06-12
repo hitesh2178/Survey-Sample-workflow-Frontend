@@ -1,0 +1,28 @@
+{
+  "assessment_data": [
+    {
+      "code": "LT1",
+      "spectrum": "Detail - Oriented vs Flexible Approach",
+      "range": "Sense of Competence",
+      "question": "You're assigned a complex project with a tight deadline, but it involves areas where you have limited experience. How do you proceed?",
+      "options": [
+        { "text": "Identify your knowledge gaps, seek help or training, and plan thoroughly before starting.", "weight": 3 },
+        { "text": "Learn on the job, prioritize the deadline, and ask for help only if necessary.", "weight": 3 },
+        { "text": "Handle tasks independently, adapting as you progress without actively seeking guidance.", "weight": 1 },
+        { "text": "Delegate specialized tasks and focus on your strengths.", "weight": 1 }
+      ]
+    },
+    {
+      "code": "LT2",
+      "spectrum": "Detail - Oriented vs Flexible Approach",
+      "range": "Orderliness",
+      "question": "Your team has one week to complete a report requiring input from multiple members. How do you ensure it's finished on time?",
+      "options": [
+        { "text": "Assign sections with clear deadlines, create a timeline for integration, and schedule regular check-ins.", "weight": 4 },
+        { "text": "Assign sections with a general deadline and review progress periodically.", "weight": 3 },
+        { "text": "Assign sections with a final deadline, addressing issues only as they arise.", "weight": 2 },
+        { "text": "Have team members work independently and review the report after submission.", "weight": 2 }
+      ]
+    }
+  ]
+}
