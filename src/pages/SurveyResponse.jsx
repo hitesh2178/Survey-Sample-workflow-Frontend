@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import '../Styles/SurveyResponse.css';
 import StrengthTable from '../components/strengthTable';
 import BlindspotRankingTable from '../components/BlindspotRankingTable';
+import EmotionalRankingTable from '../components/EmotionalRankingTable';
+import WeaknessTable from '../components/WeaknessTable';
 
 const SurveyResponse = () => {
   const [responses, setResponses] = useState([]);
@@ -494,9 +496,17 @@ const SurveyResponse = () => {
         {/* Pass the complete responses data with calculated values to StrengthTable */}
         <StrengthTable surveyData={responses} />
       </div>
+      <div>
+        {/* Pass the complete responses data with calculated values to StrengthTable */}
+        <WeaknessTable surveyData={responses} />
+      </div>
     <div>
         {/* Pass the complete responses data with calculated values to StrengthTable */}
         <BlindspotRankingTable surveyData={responses} />
+      </div>
+    <div>
+        {/* Pass the complete responses data with calculated values to StrengthTable */}
+        <EmotionalRankingTable surveyData={responses} />
       </div>
       </>
   );
