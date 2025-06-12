@@ -3,6 +3,8 @@ import '../Styles/SurveyResponse.css';
 
 const SurveyResponse = () => {
   const [responses, setResponses] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage, setRecordsPerPage] = useState(5); // Changed from 3 to 5
 
   const calculateValues = (res) => {
     const positive = (0.6 * res.option1) + (0.4 * res.option2);
@@ -68,9 +70,10 @@ const SurveyResponse = () => {
 
   const handleOptionChange = (index, key, value) => {
     const updatedResponses = [...responses];
-    updatedResponses[index][key] = parseInt(value);
-    const recalculated = calculateValues(updatedResponses[index]);
-    updatedResponses[index] = recalculated;
+    const actualIndex = (currentPage - 1) * recordsPerPage + index;
+    updatedResponses[actualIndex][key] = parseInt(value);
+    const recalculated = calculateValues(updatedResponses[actualIndex]);
+    updatedResponses[actualIndex] = recalculated;
     setResponses(updatedResponses);
   };
 
@@ -87,17 +90,61 @@ const SurveyResponse = () => {
     return 'score-low';
   };
 
+  // Pagination logic
+  const totalPages = Math.ceil(responses.length / recordsPerPage);
+  const startIndex = (currentPage - 1) * recordsPerPage;
+  const endIndex = startIndex + recordsPerPage;
+  const currentRecords = responses.slice(startIndex, endIndex);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const handleRecordsPerPageChange = (newRecordsPerPage) => {
+    setRecordsPerPage(newRecordsPerPage);
+    setCurrentPage(1); // Reset to first page when changing records per page
+  };
+
+  const getPageNumbers = () => {
+    const pages = [];
+    const maxVisiblePages = 5;
+    
+    if (totalPages <= maxVisiblePages) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+      let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+      
+      if (endPage - startPage + 1 < maxVisiblePages) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+      }
+      
+      for (let i = startPage; i <= endPage; i++) {
+        pages.push(i);
+      }
+    }
+    
+    return pages;
+  };
+
   return (
     <div className="survey-response-container">
       <div className="survey-response-card">
         <div className="survey-response-header">
           <h2 className="survey-response-title">Survey Response Analysis</h2>
-          <p className="survey-response-subtitle">Detailed breakdown of survey responses and scoring</p>
-          <div style={{ marginTop: '10px' }}>
-            <small style={{ color: '#d1d5db', fontSize: '12px' }}>
-              Displaying {responses.length} survey responses
-            </small>
-          </div>
+          <p className="survey-response-subtitle">
+            Detailed breakdown of survey responses and scoring
+            <span style={{ 
+              display: 'block', 
+              marginTop: '5px', 
+              color: '#d1d5db', 
+              fontSize: '11px' 
+            }}>
+              Displaying {startIndex + 1}-{Math.min(endIndex, responses.length)} of {responses.length} responses
+            </span>
+          </p>
         </div>
 
         {responses.length === 0 ? (
@@ -106,94 +153,269 @@ const SurveyResponse = () => {
             <p className="empty-state-text">No survey data found in localStorage</p>
           </div>
         ) : (
-          <div className="survey-response-table-container">
-            <table className="survey-response-table">
-              <thead>
-                <tr>
-                  <th>Respondent ID</th>
-                  <th>Question Code</th>
-                  <th>Spectrum</th>
-                  <th>Range</th>
-                  <th>Question</th>
-                  <th>Selected Answer</th>
-                  <th>Option 1</th>
-                  <th>Option 2</th>
-                  <th>Option 3</th>
-                  <th>Option 4</th>
-                  <th>Positive</th>
-                  <th>Negative</th>
-                  <th>Score</th>
-                  <th>Percentage</th>
-                </tr>
-              </thead>
-              <tbody>
-                {responses.map((res, index) => (
-                  <tr key={res.id || index}>
-                    <td>{res.respondentId}</td>
-                    <td>{res.questionCode}</td>
-                    <td>{res.spectrum}</td>
-                    <td>{res.range}</td>
-                    <td style={{ maxWidth: '250px', wordWrap: 'break-word' }}>
-                      {res.question}
-                    </td>
-                    <td style={{ 
-                      maxWidth: '300px', 
-                      wordWrap: 'break-word', 
-                      fontSize: '12px',
-                      backgroundColor: '#f0f9ff',
-                      fontWeight: '500'
-                    }}>
-                      {res.selectedAnswer && (
-                        <div>
-                          <span style={{ color: '#0369a1', fontWeight: 'bold' }}>
-                            Option {(res.selectedOption || 0) + 1}:
-                          </span>
-                          <br />
-                          <span style={{ color: '#374151' }}>
-                            {res.selectedAnswer}
-                          </span>
-                        </div>
-                      )}
-                    </td>
-                    {[1, 2, 3, 4].map((opt) => (
-                      <td key={opt} style={{ textAlign: 'center' }}>
-                        <select
-                          value={res[`option${opt}`]}
-                          onChange={(e) =>
-                            handleOptionChange(index, `option${opt}`, e.target.value)
-                          }
-                          style={{
-                            width: '60px',
-                            padding: '4px',
-                            borderRadius: '4px',
-                            border: '1px solid #d1d5db'
-                          }}
-                        >
-                          {[1, 2, 3, 4].map((val) => (
-                            <option key={val} value={val}>
-                              {val}
-                            </option>
-                          ))}
-                        </select>
-                      </td>
-                    ))}
-                    <td style={{ textAlign: 'center', fontWeight: '500' }}>
-                      {res.positive?.toFixed(1)}
-                    </td>
-                    <td style={{ textAlign: 'center', fontWeight: '500' }}>
-                      {res.negative?.toFixed(1)}
-                    </td>
-                    <td style={{ textAlign: 'center', fontWeight: 'bold' }} className={getScoreClass(res.score)}>
-                      {res.score}
-                    </td>
-                    <td style={{ textAlign: 'center', fontWeight: 'bold' }} className={getPercentageClass(res.percentage)}>
-                      {res.percentage}%
-                    </td>
+          <>
+            {/* Records per page selector */}
+            <div className="pagination-controls-top" style={{ 
+              display: 'flex', 
+              justifyContent: 'space-between', 
+              alignItems: 'center', 
+              marginBottom: '10px',
+              padding: '8px 0'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <label style={{ color: '#6b7280', fontSize: '13px' }}>Records per page:</label>
+                <select 
+                  value={recordsPerPage} 
+                  onChange={(e) => handleRecordsPerPageChange(parseInt(e.target.value))}
+                  style={{
+                    padding: '4px 8px',
+                    borderRadius: '4px',
+                    border: '1px solid #d1d5db',
+                    backgroundColor: '#fff',
+                    fontSize: '13px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <option value={5}>5</option>
+                  <option value={10}>10</option>
+                  <option value={15}>15</option>
+                  <option value={20}>20</option>
+                  <option value={25}>25</option>
+                  <option value={30}>30</option>
+                </select>
+              </div>
+              <div style={{ color: '#6b7280', fontSize: '13px' }}>
+                Page {currentPage} of {totalPages}
+              </div>
+            </div>
+
+            <div className="survey-response-table-container">
+              <table className="survey-response-table">
+                <thead>
+                  <tr>
+                    <th>Respondent ID</th>
+                    <th>Question Code</th>
+                    <th>Spectrum</th>
+                    <th>Range</th>
+                    <th>Question</th>
+                    <th>Selected Answer</th>
+                    <th>Option 1</th>
+                    <th>Option 2</th>
+                    <th>Option 3</th>
+                    <th>Option 4</th>
+                    <th>Positive</th>
+                    <th>Negative</th>
+                    <th>Score</th>
+                    <th>Percentage</th>
                   </tr>
+                </thead>
+                <tbody>
+                  {currentRecords.map((res, index) => (
+                    <tr key={res.id || index}>
+                      <td style={{ fontSize: '11px', fontWeight: '600' }}>
+                        {res.respondentId}
+                      </td>
+                      <td style={{ fontSize: '11px', fontWeight: '700', color: '#3730a3' }}>
+                        {res.questionCode}
+                      </td>
+                      <td style={{ 
+                        fontSize: '11px', 
+                        maxWidth: '90px', 
+                        overflow: 'hidden', 
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap'
+                      }}>
+                        {res.spectrum}
+                      </td>
+                      <td style={{ 
+                        fontSize: '11px',
+                        maxWidth: '70px', 
+                        overflow: 'hidden', 
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap'
+                      }}>
+                        {res.range}
+                      </td>
+                      <td style={{ 
+                        maxWidth: '180px', 
+                        wordWrap: 'break-word',
+                        fontSize: '11px',
+                        lineHeight: '1.3'
+                      }}>
+                        {res.question}
+                      </td>
+                      <td style={{ 
+                        maxWidth: '160px', 
+                        wordWrap: 'break-word', 
+                        fontSize: '10px',
+                        backgroundColor: '#f0f9ff',
+                        fontWeight: '500',
+                        padding: '6px 4px'
+                      }}>
+                        {res.selectedAnswer && (
+                          <div>
+                            <span style={{ color: '#0369a1', fontWeight: 'bold', fontSize: '9px' }}>
+                              Option {(res.selectedOption || 0) + 1}:
+                            </span>
+                            <br />
+                            <span style={{ color: '#374151', fontSize: '10px' }}>
+                              {res.selectedAnswer}
+                            </span>
+                          </div>
+                        )}
+                      </td>
+                      {[1, 2, 3, 4].map((opt) => (
+                        <td key={opt} style={{ textAlign: 'center' }}>
+                          <select
+                            value={res[`option${opt}`]}
+                            onChange={(e) =>
+                              handleOptionChange(index, `option${opt}`, e.target.value)
+                            }
+                            style={{
+                              width: '45px',
+                              padding: '2px',
+                              borderRadius: '3px',
+                              border: '1px solid #d1d5db',
+                              fontSize: '11px'
+                            }}
+                          >
+                            {[1, 2, 3, 4].map((val) => (
+                              <option key={val} value={val}>
+                                {val}
+                              </option>
+                            ))}
+                          </select>
+                        </td>
+                      ))}
+                      <td style={{ 
+                        textAlign: 'center', 
+                        fontWeight: '500',
+                        fontSize: '11px'
+                      }}>
+                        {res.positive?.toFixed(1)}
+                      </td>
+                      <td style={{ 
+                        textAlign: 'center', 
+                        fontWeight: '500',
+                        fontSize: '11px'
+                      }}>
+                        {res.negative?.toFixed(1)}
+                      </td>
+                      <td style={{ 
+                        textAlign: 'center', 
+                        fontWeight: 'bold',
+                        fontSize: '11px'
+                      }} className={getScoreClass(res.score)}>
+                        {res.score}
+                      </td>
+                      <td style={{ 
+                        textAlign: 'center', 
+                        fontWeight: 'bold',
+                        fontSize: '11px'
+                      }} className={getPercentageClass(res.percentage)}>
+                        {res.percentage}%
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Pagination controls */}
+            {totalPages > 1 && (
+              <div className="pagination-controls" style={{ 
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center', 
+                gap: '8px',
+                marginTop: '10px',
+                padding: '10px 0'
+              }}>
+                <button 
+                  onClick={() => handlePageChange(1)}
+                  disabled={currentPage === 1}
+                  style={{
+                    padding: '6px 10px',
+                    borderRadius: '4px',
+                    border: '1px solid #d1d5db',
+                    backgroundColor: currentPage === 1 ? '#f9fafb' : '#fff',
+                    color: currentPage === 1 ? '#9ca3af' : '#374151',
+                    cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+                    fontSize: '13px'
+                  }}
+                >
+                  First
+                </button>
+                
+                <button 
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  style={{
+                    padding: '6px 10px',
+                    borderRadius: '4px',
+                    border: '1px solid #d1d5db',
+                    backgroundColor: currentPage === 1 ? '#f9fafb' : '#fff',
+                    color: currentPage === 1 ? '#9ca3af' : '#374151',
+                    cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+                    fontSize: '13px'
+                  }}
+                >
+                  Previous
+                </button>
+
+                {getPageNumbers().map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => handlePageChange(page)}
+                    style={{
+                      padding: '6px 10px',
+                      borderRadius: '4px',
+                      border: '1px solid #d1d5db',
+                      backgroundColor: currentPage === page ? '#3b82f6' : '#fff',
+                      color: currentPage === page ? '#fff' : '#374151',
+                      cursor: 'pointer',
+                      fontSize: '13px',
+                      fontWeight: currentPage === page ? 'bold' : 'normal'
+                    }}
+                  >
+                    {page}
+                  </button>
                 ))}
-              </tbody>
-            </table>
-          </div>
+
+                <button 
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  style={{
+                    padding: '6px 10px',
+                    borderRadius: '4px',
+                    border: '1px solid #d1d5db',
+                    backgroundColor: currentPage === totalPages ? '#f9fafb' : '#fff',
+                    color: currentPage === totalPages ? '#9ca3af' : '#374151',
+                    cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
+                    fontSize: '13px'
+                  }}
+                >
+                  Next
+                </button>
+                
+                <button 
+                  onClick={() => handlePageChange(totalPages)}
+                  disabled={currentPage === totalPages}
+                  style={{
+                    padding: '6px 10px',
+                    borderRadius: '4px',
+                    border: '1px solid #d1d5db',
+                    backgroundColor: currentPage === totalPages ? '#f9fafb' : '#fff',
+                    color: currentPage === totalPages ? '#9ca3af' : '#374151',
+                    cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
+                    fontSize: '13px'
+                  }}
+                >
+                  Last
+                </button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

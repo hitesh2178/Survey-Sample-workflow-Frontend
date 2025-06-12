@@ -1,30 +1,35 @@
-/* Survey Response Table Styles */
+/* Survey Response Table Styles - Optimized for Reduced Vertical Space */
 .survey-response-container {
-  padding: 1.5rem;
+  padding: 1.5rem; /* Reduced from 1.5rem */
   background-color: #f8fafc;
-  min-height: 100vh;
+  min-height: auto; /* Changed from 100vh */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
 }
 
 .survey-response-card {
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; /* Reduced from 12px */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Reduced shadow */
   overflow: hidden;
   border: 1px solid #e2e8f0;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .survey-response-header {
-  padding: 1.5rem 2rem;
+  padding: 1rem 1.5rem; /* Reduced from 1.5rem 2rem */
   background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
   color: white;
-  border-bottom: 3px solid #3b82f6;
+  border-bottom: 2px solid #3b82f6; /* Reduced from 3px */
 }
 
 .survey-response-title {
-  font-size: 1.75rem;
+  font-size: 1.5rem; /* Reduced from 1.75rem */
   font-weight: 700;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.25rem 0; /* Reduced bottom margin */
   letter-spacing: -0.02em;
 }
 
@@ -33,18 +38,23 @@
   margin: 0;
   font-weight: 400;
   opacity: 0.9;
+  font-size: 0.875rem; /* Added smaller font size */
 }
 
 .survey-response-table-container {
   overflow-x: auto;
   background: white;
+  margin: 0 0.75rem; /* Reduced from 1rem */
+  border-radius: 6px; /* Reduced from 8px */
+  border: 1px solid #e2e8f0;
 }
 
 .survey-response-table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: auto;
-  font-size: 0.875rem;
+  table-layout: fixed;
+  font-size: 0.8rem; /* Reduced from 0.875rem */
+  min-width: 1200px;
 }
 
 .survey-response-table thead {
@@ -55,10 +65,10 @@
 }
 
 .survey-response-table th {
-  padding: 1rem 0.75rem;
+  padding: 0.5rem 0.4rem; /* Reduced from 0.75rem 0.5rem */
   text-align: left;
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.65rem; /* Reduced from 0.7rem */
   color: #475569;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -66,6 +76,22 @@
   white-space: nowrap;
   position: relative;
 }
+
+/* Column width specifications - keeping same ratios but more compact */
+.survey-response-table th:nth-child(1) { width: 70px; }   /* Respondent ID */
+.survey-response-table th:nth-child(2) { width: 70px; }   /* Question Code */
+.survey-response-table th:nth-child(3) { width: 90px; }   /* Spectrum */
+.survey-response-table th:nth-child(4) { width: 70px; }   /* Range */
+.survey-response-table th:nth-child(5) { width: 180px; }  /* Question */
+.survey-response-table th:nth-child(6) { width: 160px; }  /* Selected Answer */
+.survey-response-table th:nth-child(7) { width: 55px; }   /* Option 1 */
+.survey-response-table th:nth-child(8) { width: 55px; }   /* Option 2 */
+.survey-response-table th:nth-child(9) { width: 55px; }   /* Option 3 */
+.survey-response-table th:nth-child(10) { width: 55px; }  /* Option 4 */
+.survey-response-table th:nth-child(11) { width: 65px; }  /* Positive */
+.survey-response-table th:nth-child(12) { width: 65px; }  /* Negative */
+.survey-response-table th:nth-child(13) { width: 55px; }  /* Score */
+.survey-response-table th:nth-child(14) { width: 70px; }  /* Percentage */
 
 .survey-response-table th:last-child {
   border-right: none;
@@ -77,7 +103,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 1px; /* Reduced from 2px */
   background: linear-gradient(90deg, #3b82f6, #8b5cf6);
 }
 
@@ -89,7 +115,7 @@
 .survey-response-table tbody tr:hover {
   background-color: #f8fafc;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); /* Reduced shadow */
 }
 
 .survey-response-table tbody tr:nth-child(even) {
@@ -101,13 +127,28 @@
 }
 
 .survey-response-table td {
-  padding: 1rem 0.75rem;
+  padding: 0.5rem 0.4rem; /* Reduced from 0.75rem 0.5rem */
   border-right: 1px solid #f1f5f9;
   vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3; /* Added tighter line height */
 }
 
 .survey-response-table td:last-child {
   border-right: none;
+}
+
+/* Pagination controls styling - more compact */
+.pagination-controls-top {
+  padding: 0 0.75rem;
+  margin-bottom: 15px; /* Reduced from 20px */
+}
+
+.pagination-controls {
+  padding: 0 0.75rem;
+  margin-top: 15px; /* Reduced from 20px */
+  padding-bottom: 15px; /* Reduced from 20px */
 }
 
 /* Respondent ID Column */
@@ -116,9 +157,9 @@
   font-weight: 600;
   color: #1e293b;
   background-color: #f8fafc;
-  border-radius: 4px;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.8rem;
+  border-radius: 3px; /* Reduced from 4px */
+  padding: 0.2rem 0.4rem; /* Reduced padding */
+  font-size: 0.7rem; /* Reduced from 0.75rem */
 }
 
 /* Question Code Column */
@@ -126,16 +167,17 @@
   font-weight: 700;
   color: #3730a3;
   background-color: #eef2ff;
-  border-radius: 6px;
-  padding: 0.25rem 0.5rem;
+  border-radius: 4px; /* Reduced from 6px */
+  padding: 0.2rem 0.4rem; /* Reduced padding */
   text-align: center;
   display: inline-block;
-  min-width: 50px;
+  min-width: 45px; /* Reduced from 50px */
+  font-size: 0.7rem; /* Reduced from 0.75rem */
 }
 
 /* Spectrum and Range Columns */
 .spectrum-cell, .range-cell {
-  max-width: 150px;
+  max-width: 90px; /* Reduced from 100px */
 }
 
 .spectrum-text, .range-text {
@@ -145,6 +187,7 @@
   text-overflow: ellipsis;
   color: #475569;
   font-weight: 500;
+  font-size: 0.7rem; /* Reduced from 0.75rem */
 }
 
 .spectrum-text:hover, .range-text:hover {
@@ -152,15 +195,15 @@
   white-space: normal;
   background-color: #1f2937;
   color: white;
-  padding: 0.5rem;
-  border-radius: 6px;
+  padding: 0.4rem; /* Reduced from 0.5rem */
+  border-radius: 4px; /* Reduced from 6px */
   position: relative;
   z-index: 20;
 }
 
 /* Question Column */
 .question-cell {
-  max-width: 200px;
+  max-width: 180px; /* Reduced from 200px */
 }
 
 .question-text {
@@ -169,7 +212,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   color: #374151;
-  line-height: 1.4;
+  line-height: 1.3; /* Reduced from 1.4 */
+  font-size: 0.7rem; /* Reduced from 0.75rem */
 }
 
 .question-text:hover {
@@ -177,8 +221,8 @@
   white-space: normal;
   background-color: #1f2937;
   color: white;
-  padding: 0.5rem;
-  border-radius: 6px;
+  padding: 0.4rem; /* Reduced from 0.5rem */
+  border-radius: 4px; /* Reduced from 6px */
   position: relative;
   z-index: 20;
 }
@@ -188,13 +232,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 24px; /* Reduced from 28px */
+  height: 24px; /* Reduced from 28px */
   background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
   color: #1e40af;
   border-radius: 50%;
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 0.7rem; /* Reduced from 0.75rem */
   border: 2px solid #3b82f6;
   transition: all 0.2s ease;
 }
@@ -208,25 +252,25 @@
 /* Positive/Negative Analysis Column */
 .analysis-score {
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.8rem; /* Reduced from 0.875rem */
   color: #1f2937;
   background-color: #f3f4f6;
-  border-radius: 6px;
-  padding: 0.25rem 0.5rem;
+  border-radius: 4px; /* Reduced from 6px */
+  padding: 0.2rem 0.4rem; /* Reduced padding */
   display: inline-block;
-  min-width: 40px;
+  min-width: 32px; /* Reduced from 35px */
   text-align: center;
 }
 
 /* Score Column */
 .score-badge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
+  padding: 0.2rem 0.4rem; /* Reduced padding */
+  border-radius: 16px; /* Reduced from 20px */
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.65rem; /* Reduced from 0.7rem */
   text-align: center;
   display: inline-block;
-  min-width: 50px;
+  min-width: 40px; /* Reduced from 45px */
 }
 
 .score-low {
@@ -252,13 +296,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.4rem; /* Reduced from 0.5rem */
 }
 
 .percentage-text {
   font-weight: 700;
-  font-size: 0.875rem;
-  min-width: 45px;
+  font-size: 0.75rem; /* Reduced from 0.8rem */
+  min-width: 38px; /* Reduced from 40px */
 }
 
 .percentage-high {
@@ -278,10 +322,10 @@
 }
 
 .percentage-bar {
-  width: 60px;
-  height: 8px;
+  width: 45px; /* Reduced from 50px */
+  height: 5px; /* Reduced from 6px */
   background-color: #e5e7eb;
-  border-radius: 10px;
+  border-radius: 8px; /* Reduced from 10px */
   overflow: hidden;
   position: relative;
 }
@@ -289,7 +333,7 @@
 .percentage-fill {
   height: 100%;
   background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
-  border-radius: 10px;
+  border-radius: 8px; /* Reduced from 10px */
   transition: width 0.8s ease-in-out;
   position: relative;
 }
@@ -310,9 +354,9 @@
   100% { transform: translateX(100%); }
 }
 
-/* Footer Stats */
+/* Footer Stats - More compact */
 .survey-response-footer {
-  padding: 1.5rem 2rem;
+  padding: 1rem 1.5rem; /* Reduced from 1.5rem 2rem */
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   border-top: 1px solid #e2e8f0;
 }
@@ -322,7 +366,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.75rem; /* Reduced from 1rem */
 }
 
 .footer-stat {
@@ -333,103 +377,109 @@
 }
 
 .footer-stat-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem; /* Reduced from 0.75rem */
   color: #6b7280;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem; /* Reduced from 0.25rem */
 }
 
 .footer-stat-value {
-  font-size: 1.25rem;
+  font-size: 1.125rem; /* Reduced from 1.25rem */
   font-weight: 700;
   color: #1f2937;
 }
 
 /* Empty State */
 .empty-state {
-  padding: 4rem 2rem;
+  padding: 3rem 2rem; /* Reduced from 4rem */
   text-align: center;
 }
 
 .empty-state-text {
   color: #6b7280;
-  font-size: 1.125rem;
+  font-size: 1rem; /* Reduced from 1.125rem */
   margin: 0;
 }
 
 .empty-state-icon {
-  font-size: 4rem;
+  font-size: 3rem; /* Reduced from 4rem */
   color: #d1d5db;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem; /* Reduced from 1rem */
   display: block;
 }
 
-/* Responsive Design */
+/* Responsive Design - More compact */
 @media (max-width: 1200px) {
+  .survey-response-card {
+    max-width: 100%;
+    margin: 0;
+  }
+  
+  .survey-response-table-container {
+    margin: 0 0.5rem;
+  }
+  
   .survey-response-table th,
   .survey-response-table td {
-    padding: 0.75rem 0.5rem;
-  }
-  
-  .spectrum-cell, .range-cell {
-    max-width: 120px;
-  }
-  
-  .question-cell {
-    max-width: 160px;
+    padding: 0.4rem 0.2rem; /* Reduced padding */
+    font-size: 0.7rem; /* Reduced from 0.75rem */
   }
 }
 
 @media (max-width: 768px) {
   .survey-response-container {
-    padding: 1rem;
+    padding: 0.75rem; /* Reduced from 1rem */
   }
   
   .survey-response-header {
-    padding: 1rem 1.5rem;
+    padding: 0.75rem 1rem; /* Reduced padding */
   }
   
   .survey-response-title {
-    font-size: 1.5rem;
+    font-size: 1.25rem; /* Reduced from 1.5rem */
+  }
+  
+  .survey-response-table-container {
+    margin: 0;
   }
   
   .survey-response-table th,
   .survey-response-table td {
-    padding: 0.5rem 0.25rem;
-    font-size: 0.75rem;
+    padding: 0.4rem 0.2rem;
+    font-size: 0.65rem; /* Reduced from 0.7rem */
   }
   
   .option-badge {
-    width: 28px;
-    height: 28px;
-    font-size: 0.75rem;
+    width: 20px; /* Reduced from 24px */
+    height: 20px; /* Reduced from 24px */
+    font-size: 0.65rem; /* Reduced from 0.7rem */
   }
   
   .percentage-bar {
-    width: 40px;
-    height: 6px;
+    width: 30px; /* Reduced from 35px */
+    height: 4px; /* Reduced from 5px */
   }
   
   .footer-stats {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem; /* Reduced from 0.5rem */
   }
 }
 
 @media (max-width: 480px) {
   .survey-response-table-container {
     border: 1px solid #e2e8f0;
-    border-radius: 8px;
+    border-radius: 6px; /* Reduced from 8px */
   }
   
   .percentage-container {
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.2rem; /* Reduced from 0.25rem */
   }
   
   .percentage-bar {
-    width: 60px;
+    width: 35px; /* Reduced from 40px */
   }
 }
 
@@ -443,6 +493,7 @@
   .survey-response-card {
     box-shadow: none;
     border: 1px solid #000;
+    max-width: 100%;
   }
   
   .survey-response-header {
