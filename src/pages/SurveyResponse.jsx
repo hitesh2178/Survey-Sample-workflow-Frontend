@@ -4,6 +4,10 @@ import StrengthTable from '../components/strengthTable';
 import BlindspotRankingTable from '../components/BlindspotRankingTable';
 import EmotionalRankingTable from '../components/EmotionalRankingTable';
 import WeaknessTable from '../components/WeaknessTable';
+import LeadershipScoresTable from '../components/LeadershipScoresTable';
+import AreaOfImprovementTable from '../components/AreaOfImprovementTable';
+import POATable from '../components/PlanOfActionTable';
+import RETable from '../components/RETable';
 
 const SurveyResponse = () => {
   const [responses, setResponses] = useState([]);
@@ -494,11 +498,7 @@ const SurveyResponse = () => {
     </div>
     <div>
         {/* Pass the complete responses data with calculated values to StrengthTable */}
-        <StrengthTable surveyData={responses} />
-      </div>
-      <div>
-        {/* Pass the complete responses data with calculated values to StrengthTable */}
-        <WeaknessTable surveyData={responses} />
+        <LeadershipScoresTable surveyData={responses} />
       </div>
     <div>
         {/* Pass the complete responses data with calculated values to StrengthTable */}
@@ -507,6 +507,26 @@ const SurveyResponse = () => {
     <div>
         {/* Pass the complete responses data with calculated values to StrengthTable */}
         <EmotionalRankingTable surveyData={responses} />
+      </div>
+      <div>
+        {/* Pass the complete responses data with calculated values to StrengthTable */}
+        <StrengthTable surveyData={responses} />
+      </div>
+      <div>
+        {/* Pass the complete responses data with calculated values to StrengthTable */}
+        <WeaknessTable surveyData={responses} />
+      </div>
+      <div>
+        {/* Pass the complete responses data with calculated values to StrengthTable */}
+        <AreaOfImprovementTable surveyData={responses} />
+      </div>
+      <div>
+        {/* Pass the complete responses data with calculated values to StrengthTable */}
+        <POATable surveyData={responses} />
+      </div>
+      <div>
+        {/* Pass the complete responses data with calculated values to StrengthTable */}
+        <RETable surveyData={responses} />
       </div>
       </>
   );

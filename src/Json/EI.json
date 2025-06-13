@@ -1,0 +1,28 @@
+{
+  "emotional_intelligence": [
+    {
+      "questionCode": "ER1",
+      "strength": "You’re proactive and plan well, ensuring smooth operations and minimizing disruptions. Your foresight helps you stay ahead and maintain a stable environment for your team."
+    },
+    {
+      "questionCode": "ER2",
+      "strength": "You manage frustration well under pressure, helping maintain a calm and productive environment for your team. This ensures you stay in control and focused during tough situations."
+    },
+    {
+      "questionCode": "ER3",
+      "strength": "You adjust well to emotional changes, keeping your team engaged and navigating through change smoothly. This flexibility helps foster strong team relationships and effective leadership."
+    },
+    {
+      "questionCode": "ER4",
+      "strength": "You are highly aware of how your emotions and actions impact others. You value feedback and are open to others' opinions, which helps build trust and effective communication within your team."
+    },
+    {
+      "questionCode": "ER5",
+      "strength": "You manage impulses well, making thoughtful and consistent decisions that promote stability and trust within your team. This creates a calm and reliable leadership style."
+    },
+    {
+      "questionCode": "ER6",
+      "strength": "You handle stress effectively, staying calm and focused under pressure. Your composure helps you lead your team through challenges, maintaining productivity and a positive atmosphere."
+    }
+  ]
+}
