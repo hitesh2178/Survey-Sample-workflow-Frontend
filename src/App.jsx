@@ -12,6 +12,7 @@ import Unauthorized from './pages/Unauthorized';
 import Survey from './pages/Survey';
 import SurveyResponse from './pages/SurveyResponse';
 
+// app function
 function App() {
   return (
     <>
