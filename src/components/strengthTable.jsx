@@ -1,74 +1,92 @@
-import { useEffect, useState } from 'react';
-import '../Styles/strengthTable.css';
-import strengthDescriptions from '../Json/strength.json';
+import { useEffect, useState } from "react";
+import interpretations from "../Json/interpretations.json";
+import "../Styles/strengthTable.css";
 
 const StrengthTable = ({ surveyData }) => {
   const [strengths, setStrengths] = useState([]);
 
   useEffect(() => {
-    // Calculate average percentage for a given array of question codes
+    if (!surveyData || surveyData.length === 0) return;
+
     const getAveragePercentage = (codes) => {
-      const filtered = surveyData.filter(item => codes.includes(item.questionCode));
-      const total = filtered.reduce((acc, cur) => acc + (cur.percentage || 0), 0);
+      const filtered = surveyData.filter((item) =>
+        codes.includes(item.questionCode)
+      );
+      const total = filtered.reduce(
+        (acc, cur) => acc + (cur.percentage || 0),
+        0
+      );
       return filtered.length ? Math.round(total / filtered.length) : 0;
     };
 
-    // Map percentage to descriptive strength text from JSON
-    const getStrengthText = (percentage) => {
-      if (percentage >= 90) return strengthDescriptions.strengths[0].text;
-      if (percentage >= 80) return strengthDescriptions.strengths[1].text;
-      if (percentage >= 70) return strengthDescriptions.strengths[2].text;
-      if (percentage >= 60) return strengthDescriptions.strengths[3].text;
-      return strengthDescriptions.strengths[4].text;
-    };
-
-    // Leadership groups based on updated excel data
+    // ------------------- Leadership Strengths -------------------
     const leadershipGroups = {
-      LTA: ['LT1', 'LT2', 'LT3', 'LT4', 'LT5', 'LT6', 'LT7'],
-      LTB: ['LT8', 'LT9', 'LT10', 'LT11', 'LT12', 'LT13', 'LT14'],
+      LTA: ["LT1", "LT2", "LT3", "LT4", "LT5", "LT6", "LT7"],
+      LTB: ["LT8", "LT9", "LT10", "LT11", "LT12", "LT13", "LT14"],
     };
 
-    // Compute leadership strengths
-    const leadershipStrengths = Object.entries(leadershipGroups).map(([code, codes]) => {
-      const avg = getAveragePercentage(codes);
-      return {
-        code,
-        percentage: avg,
-        strength: getStrengthText(avg),
-      };
-    });
+    const leadershipStrengths = Object.entries(leadershipGroups).map(
+      ([code, codes]) => {
+        const avg = getAveragePercentage(codes);
+        const match = interpretations.leadership_interpretations.find(
+          (entry) => {
+            if (entry.code !== code) return false;
+            const [high, low] = entry.range.split("-").map(Number);
+            return avg <= high && avg >= low;
+          }
+        );
 
-    // Blindspot groups
+        return {
+          code,
+          percentage: avg,
+          strength: match?.strength || "No strength interpretation found",
+        };
+      }
+    );
+
+    // ------------------- Blindspot Strength (Top Rank) -------------------
     const bsGroups = {
-      BSA: ['BS1', 'BS2', 'BS3'],
-      BSB: ['BS4', 'BS5', 'BS6'],
-      BSC: ['BS7', 'BS8', 'BS9'],
-      BSD: ['BS10', 'BS11', 'BS12'],
-      BSE: ['BS13', 'BS14', 'BS15'],
+      BSA: ["BS1", "BS2", "BS3"],
+      BSB: ["BS4", "BS5", "BS6"],
+      BSC: ["BS7", "BS8", "BS9"],
+      BSD: ["BS10", "BS11", "BS12"],
+      BSE: ["BS13", "BS14", "BS15"],
     };
 
-    // Compute Blindspot rankings & get top 1
-    const bsRankings = Object.entries(bsGroups).map(([code, codes]) => {
-      const avg = getAveragePercentage(codes);
-      return { code, percentage: avg };
-    });
-    const sortedBS = bsRankings.sort((a, b) => b.percentage - a.percentage);
-    const topBS = sortedBS[0];
-    const bsStrength = topBS ? getStrengthText(topBS.percentage) : 'No data';
+    const bsRanked = Object.entries(bsGroups)
+      .map(([code, codes]) => {
+        const avg = getAveragePercentage(codes);
+        return { code, percentage: avg };
+      })
+      .sort((a, b) => b.percentage - a.percentage);
 
-    // Emotional Intelligence data (filter ER codes)
-    const erData = surveyData.filter(item => item.questionCode.startsWith('ER'));
-    const sortedER = erData.sort((a, b) => b.percentage - a.percentage);
+    const topBS = bsRanked[0];
+    const bsStrength = {
+      code: topBS.code,
+      percentage: topBS.percentage,
+      strength:
+        interpretations.blindspot_interpretations.strengths[topBS.code] ||
+        "No strength interpretation found",
+    };
+
+    // ------------------- Emotional Intelligence Strength (Top Rank) -------------------
+    const erItems = surveyData.filter((item) =>
+      item.questionCode.startsWith("ER")
+    );
+    const sortedER = [...erItems].sort((a, b) => b.percentage - a.percentage);
     const topER = sortedER[0];
-    const erStrength = topER ? getStrengthText(topER.percentage) : 'No data';
 
-    // Combine all strengths
-    const allStrengths = [
-      ...leadershipStrengths,
-      topBS ? { code: topBS.code, percentage: topBS.percentage, strength: bsStrength } : null,
-      topER ? { code: topER.questionCode, percentage: topER.percentage, strength: erStrength } : null,
-    ].filter(Boolean); // filter out any nulls
+    const erStrength = {
+      code: topER?.questionCode || "N/A",
+      percentage: topER?.percentage || 0,
+      strength:
+        interpretations.emotional_intelligence_interpretations.strengths[
+          topER?.questionCode
+        ] || "No strength interpretation found",
+    };
 
+    // ------------------- Final Strength List -------------------
+    const allStrengths = [...leadershipStrengths, bsStrength, erStrength];
     setStrengths(allStrengths);
   }, [surveyData]);
 

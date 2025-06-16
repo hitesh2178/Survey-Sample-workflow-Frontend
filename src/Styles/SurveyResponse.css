@@ -1,9 +1,10 @@
-/* Survey Response Table Styles - Optimized for Reduced Vertical Space with Fixed Headers */
+/* Survey Response Table Styles - Optimized for Reduced Vertical Space with Fixed Headers - 13 Columns */
 .survey-response-container {
   padding: 1.5rem;
   background-color: #f8fafc;
   min-height: auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
   display: flex;
   justify-content: center;
 }
@@ -14,7 +15,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   border: 1px solid #e2e8f0;
-  max-width: 1500px;
+  max-width: 1400px;
   width: 100%;
   margin: 0 auto;
 }
@@ -55,7 +56,7 @@
   border-collapse: collapse;
   table-layout: fixed;
   font-size: 0.8rem;
-  min-width: 1450px;
+  min-width: 1250px;
 }
 
 .survey-response-table thead {
@@ -82,28 +83,53 @@
   box-sizing: border-box;
 }
 
-/* Fixed Column width specifications */
-.survey-response-table th:nth-child(1) { width: 85px; }   /* Respondent ID */
-.survey-response-table th:nth-child(2) { width: 85px; }   /* Question Code */
-.survey-response-table th:nth-child(3) { width: 120px; }  /* Spectrum */
-.survey-response-table th:nth-child(4) { width: 85px; }   /* Range */
-.survey-response-table th:nth-child(5) { width: 220px; }  /* Question */
-.survey-response-table th:nth-child(6) { width: 200px; }  /* Selected Answer */
-.survey-response-table th:nth-child(7) { width: 70px; }   /* Option 1 */
-.survey-response-table th:nth-child(8) { width: 70px; }   /* Option 2 */
-.survey-response-table th:nth-child(9) { width: 70px; }   /* Option 3 */
-.survey-response-table th:nth-child(10) { width: 70px; }  /* Option 4 */
-.survey-response-table th:nth-child(11) { width: 75px; }  /* Positive */
-.survey-response-table th:nth-child(12) { width: 75px; }  /* Negative */
-.survey-response-table th:nth-child(13) { width: 65px; }  /* Score */
-.survey-response-table th:nth-child(14) { width: 85px; }  /* Percentage */
+/* Fixed Column width specifications - Updated for 13 columns */
+.survey-response-table th:nth-child(1) {
+  width: 85px;
+} /* Respondent ID */
+.survey-response-table th:nth-child(2) {
+  width: 85px;
+} /* Question Code */
+.survey-response-table th:nth-child(3) {
+  width: 120px;
+} /* Spectrum */
+.survey-response-table th:nth-child(4) {
+  width: 85px;
+} /* Range */
+.survey-response-table th:nth-child(5) {
+  width: 280px;
+} /* Question - Increased width */
+.survey-response-table th:nth-child(6) {
+  width: 70px;
+} /* Option 1 */
+.survey-response-table th:nth-child(7) {
+  width: 70px;
+} /* Option 2 */
+.survey-response-table th:nth-child(8) {
+  width: 70px;
+} /* Option 3 */
+.survey-response-table th:nth-child(9) {
+  width: 70px;
+} /* Option 4 */
+.survey-response-table th:nth-child(10) {
+  width: 75px;
+} /* Positive */
+.survey-response-table th:nth-child(11) {
+  width: 75px;
+} /* Negative */
+.survey-response-table th:nth-child(12) {
+  width: 65px;
+} /* Score */
+.survey-response-table th:nth-child(13) {
+  width: 85px;
+} /* Percentage */
 
 .survey-response-table th:last-child {
   border-right: none;
 }
 
 .survey-response-table th::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -160,7 +186,7 @@
 
 /* Respondent ID Column */
 .respondent-id {
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-weight: 600;
   color: #1e293b;
   background-color: #f8fafc;
@@ -183,11 +209,13 @@
 }
 
 /* Spectrum and Range Columns */
-.spectrum-cell, .range-cell {
+.spectrum-cell,
+.range-cell {
   max-width: 120px;
 }
 
-.spectrum-text, .range-text {
+.spectrum-text,
+.range-text {
   display: block;
   white-space: nowrap;
   overflow: hidden;
@@ -197,7 +225,8 @@
   font-size: 0.7rem;
 }
 
-.spectrum-text:hover, .range-text:hover {
+.spectrum-text:hover,
+.range-text:hover {
   overflow: visible;
   white-space: normal;
   background-color: #1f2937;
@@ -210,7 +239,7 @@
 
 /* Question Column */
 .question-cell {
-  max-width: 220px;
+  max-width: 280px;
 }
 
 .question-text {
@@ -346,19 +375,28 @@
 }
 
 .percentage-fill::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
   animation: shimmer 2s infinite;
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 /* Footer Stats - More compact */
@@ -416,21 +454,21 @@
   display: block;
 }
 
-/* Responsive Design - More compact */
+/* Responsive Design - Updated for 13 columns */
 @media (max-width: 1400px) {
   .survey-response-card {
     max-width: 100%;
     margin: 0;
   }
-  
+
   .survey-response-table-container {
     margin: 0 0.5rem;
   }
-  
+
   .survey-response-table {
-    min-width: 1350px;
+    min-width: 1200px;
   }
-  
+
   .survey-response-table th,
   .survey-response-table td {
     padding: 0.4rem 0.3rem;
@@ -440,86 +478,136 @@
 
 @media (max-width: 1200px) {
   .survey-response-table {
-    min-width: 1300px;
+    min-width: 1150px;
   }
-  
+
   .survey-response-table th,
   .survey-response-table td {
     padding: 0.4rem 0.2rem;
     font-size: 0.7rem;
   }
-  
-  /* Adjust column widths for medium screens */
-  .survey-response-table th:nth-child(1) { width: 75px; }
-  .survey-response-table th:nth-child(2) { width: 75px; }
-  .survey-response-table th:nth-child(3) { width: 110px; }
-  .survey-response-table th:nth-child(4) { width: 75px; }
-  .survey-response-table th:nth-child(5) { width: 200px; }
-  .survey-response-table th:nth-child(6) { width: 180px; }
-  .survey-response-table th:nth-child(7) { width: 60px; }
-  .survey-response-table th:nth-child(8) { width: 60px; }
-  .survey-response-table th:nth-child(9) { width: 60px; }
-  .survey-response-table th:nth-child(10) { width: 60px; }
-  .survey-response-table th:nth-child(11) { width: 65px; }
-  .survey-response-table th:nth-child(12) { width: 65px; }
-  .survey-response-table th:nth-child(13) { width: 55px; }
-  .survey-response-table th:nth-child(14) { width: 75px; }
+
+  /* Adjust column widths for medium screens - 13 columns */
+  .survey-response-table th:nth-child(1) {
+    width: 75px;
+  } /* Respondent ID */
+  .survey-response-table th:nth-child(2) {
+    width: 75px;
+  } /* Question Code */
+  .survey-response-table th:nth-child(3) {
+    width: 110px;
+  } /* Spectrum */
+  .survey-response-table th:nth-child(4) {
+    width: 75px;
+  } /* Range */
+  .survey-response-table th:nth-child(5) {
+    width: 250px;
+  } /* Question */
+  .survey-response-table th:nth-child(6) {
+    width: 60px;
+  } /* Option 1 */
+  .survey-response-table th:nth-child(7) {
+    width: 60px;
+  } /* Option 2 */
+  .survey-response-table th:nth-child(8) {
+    width: 60px;
+  } /* Option 3 */
+  .survey-response-table th:nth-child(9) {
+    width: 60px;
+  } /* Option 4 */
+  .survey-response-table th:nth-child(10) {
+    width: 65px;
+  } /* Positive */
+  .survey-response-table th:nth-child(11) {
+    width: 65px;
+  } /* Negative */
+  .survey-response-table th:nth-child(12) {
+    width: 55px;
+  } /* Score */
+  .survey-response-table th:nth-child(13) {
+    width: 75px;
+  } /* Percentage */
 }
 
 @media (max-width: 768px) {
   .survey-response-container {
     padding: 0.75rem;
   }
-  
+
   .survey-response-header {
     padding: 0.75rem 1rem;
   }
-  
+
   .survey-response-title {
     font-size: 1.25rem;
   }
-  
+
   .survey-response-table-container {
     margin: 0;
   }
-  
+
   .survey-response-table {
-    min-width: 1200px;
+    min-width: 1050px;
   }
-  
+
   .survey-response-table th,
   .survey-response-table td {
     padding: 0.4rem 0.2rem;
     font-size: 0.65rem;
   }
-  
-  /* Mobile column widths */
-  .survey-response-table th:nth-child(1) { width: 70px; }
-  .survey-response-table th:nth-child(2) { width: 70px; }
-  .survey-response-table th:nth-child(3) { width: 100px; }
-  .survey-response-table th:nth-child(4) { width: 70px; }
-  .survey-response-table th:nth-child(5) { width: 180px; }
-  .survey-response-table th:nth-child(6) { width: 160px; }
-  .survey-response-table th:nth-child(7) { width: 55px; }
-  .survey-response-table th:nth-child(8) { width: 55px; }
-  .survey-response-table th:nth-child(9) { width: 55px; }
-  .survey-response-table th:nth-child(10) { width: 55px; }
-  .survey-response-table th:nth-child(11) { width: 60px; }
-  .survey-response-table th:nth-child(12) { width: 60px; }
-  .survey-response-table th:nth-child(13) { width: 50px; }
-  .survey-response-table th:nth-child(14) { width: 70px; }
-  
+
+  /* Mobile column widths - 13 columns */
+  .survey-response-table th:nth-child(1) {
+    width: 70px;
+  } /* Respondent ID */
+  .survey-response-table th:nth-child(2) {
+    width: 70px;
+  } /* Question Code */
+  .survey-response-table th:nth-child(3) {
+    width: 100px;
+  } /* Spectrum */
+  .survey-response-table th:nth-child(4) {
+    width: 70px;
+  } /* Range */
+  .survey-response-table th:nth-child(5) {
+    width: 220px;
+  } /* Question */
+  .survey-response-table th:nth-child(6) {
+    width: 55px;
+  } /* Option 1 */
+  .survey-response-table th:nth-child(7) {
+    width: 55px;
+  } /* Option 2 */
+  .survey-response-table th:nth-child(8) {
+    width: 55px;
+  } /* Option 3 */
+  .survey-response-table th:nth-child(9) {
+    width: 55px;
+  } /* Option 4 */
+  .survey-response-table th:nth-child(10) {
+    width: 60px;
+  } /* Positive */
+  .survey-response-table th:nth-child(11) {
+    width: 60px;
+  } /* Negative */
+  .survey-response-table th:nth-child(12) {
+    width: 50px;
+  } /* Score */
+  .survey-response-table th:nth-child(13) {
+    width: 70px;
+  } /* Percentage */
+
   .option-badge {
     width: 20px;
     height: 20px;
     font-size: 0.65rem;
   }
-  
+
   .percentage-bar {
     width: 30px;
     height: 4px;
   }
-  
+
   .footer-stats {
     flex-direction: column;
     gap: 0.4rem;
@@ -531,12 +619,12 @@
     border: 1px solid #e2e8f0;
     border-radius: 6px;
   }
-  
+
   .percentage-container {
     flex-direction: column;
     gap: 0.2rem;
   }
-  
+
   .percentage-bar {
     width: 35px;
   }
@@ -548,25 +636,25 @@
     background: white;
     padding: 0;
   }
-  
+
   .survey-response-card {
     box-shadow: none;
     border: 1px solid #000;
     max-width: 100%;
   }
-  
+
   .survey-response-header {
     background: #f5f5f5 !important;
     color: #000 !important;
     border-bottom: 2px solid #000;
   }
-  
+
   .survey-response-table tbody tr:hover {
     background-color: transparent !important;
     transform: none !important;
     box-shadow: none !important;
   }
-  
+
   .option-badge:hover {
     transform: none !important;
     background: #dbeafe !important;

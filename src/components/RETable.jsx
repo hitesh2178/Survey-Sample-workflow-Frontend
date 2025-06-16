@@ -1,105 +1,130 @@
-import { useEffect, useState } from 'react';
-import '../Styles/strengthTable.css';
-import recommendationDescriptions from '../Json/RE.json';
+import { useEffect, useState } from "react";
+import "../Styles/strengthTable.css";
+import interpretationData from "../Json/interpretations.json";
 
-const RETable = ({ surveyData }) => {
-  const [recommendations, setRecommendations] = useState([]);
+const RecommendationTable = ({ surveyData }) => {
+  const [reList, setReList] = useState([]);
 
   useEffect(() => {
     const getAveragePercentage = (codes) => {
-      const filtered = surveyData.filter(item => codes.includes(item.questionCode));
-      const total = filtered.reduce((acc, cur) => acc + (cur.percentage || 0), 0);
-      return filtered.length ? Math.round(total / filtered.length) : 0;
+      const relevant = surveyData.filter((item) =>
+        codes.includes(item.questionCode)
+      );
+      const total = relevant.reduce(
+        (sum, item) => sum + (item.percentage || 0),
+        0
+      );
+      return relevant.length ? Math.round(total / relevant.length) : 0;
     };
 
+    // 1. Leadership Recommendations
     const leadershipGroups = {
-      LTA: ['LT1', 'LT2', 'LT3', 'LT4', 'LT5', 'LT6', 'LT7'],
-      LTB: ['LT8', 'LT9', 'LT10', 'LT11', 'LT12', 'LT13', 'LT14'],
+      LTA: ["LT1", "LT2", "LT3", "LT4", "LT5", "LT6", "LT7"],
+      LTB: ["LT8", "LT9", "LT10", "LT11", "LT12", "LT13", "LT14"],
     };
 
+    const leadershipREs = Object.entries(leadershipGroups).map(
+      ([code, codes]) => {
+        const percentage = getAveragePercentage(codes);
+        const entry = interpretationData.leadership_interpretations.find(
+          (item) => item.code === code
+        );
+        return {
+          code,
+          percentage,
+          recommendation: entry?.recommendation
+            ? entry.recommendation.join("\n")
+            : "No Recommendation found",
+        };
+      }
+    );
+
+    // 2. Blindspot Recommendations
     const blindspotGroups = {
-      BSA: ['BS1', 'BS2', 'BS3'],
-      BSB: ['BS4', 'BS5', 'BS6'],
-      BSC: ['BS7', 'BS8', 'BS9'],
-      BSD: ['BS10', 'BS11', 'BS12'],
-      BSE: ['BS13', 'BS14', 'BS15'],
+      BSA: ["BS1", "BS2", "BS3"],
+      BSB: ["BS4", "BS5", "BS6"],
+      BSC: ["BS7", "BS8", "BS9"],
+      BSD: ["BS10", "BS11", "BS12"],
+      BSE: ["BS13", "BS14", "BS15"],
     };
 
-    const erCodes = ['ER1', 'ER2', 'ER3', 'ER4', 'ER5', 'ER6'];
-
-    // Leadership RE
-    const leadershipRE = Object.entries(leadershipGroups).map(([code, codes]) => ({
-      code,
-      percentage: getAveragePercentage(codes),
-      recommendation: mapREText(code),
-    }));
-
-    // Blindspot ranked (desc by percentage)
-    const bsRanked = Object.entries(blindspotGroups)
+    const blindspotRanked = Object.entries(blindspotGroups)
       .map(([code, codes]) => ({
         code,
         percentage: getAveragePercentage(codes),
       }))
-      .sort((a, b) => b.percentage - a.percentage);
+      .sort((a, b) => b.percentage - a.percentage); // descending order
 
-    const bsRank5 = bsRanked[4]; // Rank 5
-    const bsRank4 = bsRanked[3]; // Rank 4
-
-    const blindspotRE = [
-      bsRank5 ? { code: bsRank5.code, percentage: bsRank5.percentage, recommendation: mapREText(bsRank5.code) } : null,
-      bsRank4 ? { code: bsRank4.code, percentage: bsRank4.percentage, recommendation: mapREText(bsRank4.code) } : null,
-    ].filter(Boolean);
-
-    // Emotional Intelligence ranked (desc by percentage)
-    const erRanked = erCodes
-      .map(code => {
-        const item = surveyData.find(entry => entry.questionCode === code);
-        return item ? { code, percentage: item.percentage } : null;
-      })
+    // Select rank 5 and rank 4 for blindspot: indices 4 and 3 (zero-based)
+    const blindspotSelected = [blindspotRanked[4], blindspotRanked[3]]
       .filter(Boolean)
+      .map(({ code, percentage }) => ({
+        code,
+        percentage,
+        recommendation:
+          interpretationData.blindspot_interpretations?.recommendations?.[
+            code
+          ]?.join("\n") ||
+          interpretationData.blindspot_interpretations?.recommendation?.[
+            code
+          ]?.join("\n") || // fallback if plural vs singular
+          "No Recommendation found",
+      }));
+
+    // 3. Emotional Intelligence Recommendations
+    const erDataSorted = surveyData
+      .filter((item) => item.questionCode.startsWith("ER"))
       .sort((a, b) => b.percentage - a.percentage);
 
-    const erRank6 = erRanked[5]; // Rank 6
-    const erRank5 = erRanked[4]; // Rank 5
+    // Map with rank
+    const erDataWithRank = erDataSorted.map((item, index) => ({
+      ...item,
+      rank: index + 1,
+    }));
 
-    const emotionalRE = [
-      erRank6 ? { code: erRank6.code, percentage: erRank6.percentage, recommendation: mapREText(erRank6.code) } : null,
-      erRank5 ? { code: erRank5.code, percentage: erRank5.percentage, recommendation: mapREText(erRank5.code) } : null,
-    ].filter(Boolean);
+    // Select ranks 6 and 5 from emotional intelligence (6 then 5)
+    const targetRanks = [6, 5];
+    const erSelected = targetRanks
+      .map((rank) => erDataWithRank.find((item) => item.rank === rank))
+      .filter(Boolean)
+      .map((item) => {
+        const recs =
+          interpretationData.emotional_intelligence_interpretations
+            ?.recommendation?.[item.questionCode] ||
+          interpretationData.emotional_intelligence_interpretations
+            ?.recommendations?.[item.questionCode];
 
-    // Set final ordered array
-    setRecommendations([...leadershipRE, ...blindspotRE, ...emotionalRE]);
+        const recommendation = Array.isArray(recs)
+          ? recs.join("\n")
+          : recs || "No Recommendation found";
+
+        return {
+          code: item.questionCode,
+          percentage: item.percentage,
+          recommendation,
+        };
+      });
+
+    setReList([...leadershipREs, ...blindspotSelected, ...erSelected]);
   }, [surveyData]);
-
-  const mapREText = (code) => {
-    switch (code) {
-      case 'LTA': return recommendationDescriptions.recommendations[1].topics.join(', ');
-      case 'LTB': return recommendationDescriptions.recommendations[6].topics.join(', ');
-      case 'BSC': return recommendationDescriptions.recommendations[4].topics.join(', ');
-      case 'BSD': return recommendationDescriptions.recommendations[2].topics.join(', ');
-      case 'ER5': return recommendationDescriptions.recommendations[0].topics.join(', ');
-      case 'ER3': return recommendationDescriptions.recommendations[7].topics.join(', ');
-      default: return 'No recommendation found';
-    }
-  };
 
   return (
     <div className="strength-container">
-      <h2>Recommendation Summary</h2>
+      <h2>Recommendation (RE) Table</h2>
       <table className="strength-table" aria-label="Recommendation Table">
         <thead>
           <tr>
-            <th scope="col">Code</th>
-            <th scope="col">Percentage</th>
-            <th scope="col">Recommendation</th>
+            <th>Code</th>
+            <th>Percentage</th>
+            <th>Recommendation</th>
           </tr>
         </thead>
         <tbody>
-          {recommendations.map(({ code, percentage, recommendation }) => (
+          {reList.map(({ code, percentage, recommendation }) => (
             <tr key={code}>
               <td>{code}</td>
               <td>{percentage}%</td>
-              <td>{recommendation}</td>
+              <td style={{ whiteSpace: "pre-wrap" }}>{recommendation}</td>
             </tr>
           ))}
         </tbody>
@@ -108,4 +133,4 @@ const RETable = ({ surveyData }) => {
   );
 };
 
-export default RETable;
+export default RecommendationTable;

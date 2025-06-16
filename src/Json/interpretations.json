@@ -1,0 +1,298 @@
+{
+  "leadership_interpretations": [
+    {
+      "code": "LTA",
+      "range": "100-80",
+      "strength": "Exceptional precision, accuracy, reliability, and strong organizational skills. You plan meticulously and deliver high-quality results.",
+      "weakness": "May struggle with flexibility, resisting unexpected changes and potentially micromanaging tasks.",
+      "area_of_improvement": "Focus on adopting some adaptability, delegating more, and enhancing strategic thinking to balance your detail-oriented approach.",
+      "poa": "Practice \"what-if\" scenarios, delegate with flexible processes, allocate time for strategic reflection.",
+      "recommendation": [
+        "Introduction to Leadership Styles (for broader leadership perspective)",
+        "Delegation and Empowerment",
+        "Decision Making & Problem Solving"
+      ]
+    },
+    {
+      "code": "LTA",
+      "range": "80-60",
+      "strength": "A good balance of organization and adaptability. You manage tasks effectively and are generally reliable and thorough in your work.",
+      "weakness": "Occasionally, you may struggle with disruptions, overlook details, or need to refine your organizational systems.",
+      "area_of_improvement": "Focus on increasing adaptability, delegating more, and enhancing strategic thinking to balance your detail-oriented approach.",
+      "poa": "Implement a daily planning routine, use checklists, apply the Pareto Principle.",
+      "recommendation": [
+        "Time Management and Prioritization",
+        "Goal Setting",
+        "Decision Making & Problem Solving"
+      ]
+    },
+    {
+      "code": "LTA",
+      "range": "60-40",
+      "strength": "Versatile and adaptable, easily adjusting to both structure and spontaneity. You balance both approaches well.",
+      "weakness": "Inconsistency may arise, and you might find it difficult to commit to one approach, needing effort to shift styles appropriately.",
+      "area_of_improvement": "Develop situational awareness, increase consistency, and learn to strategically apply detail or flexibility based on context.",
+      "poa": "Self-assess situations, create a decision-making framework, seek feedback on approach.",
+      "recommendation": [
+        "Leading by Example (for foundational principles)",
+        "Decision Making & Problem Solving",
+        "Team Management & Leadership (for communication)"
+      ]
+    },
+    {
+      "code": "LTA",
+      "range": "40-20",
+      "strength": "Adaptable, creative, and open to change, with a strong ability to navigate ambiguity and think resourcefully.",
+      "weakness": "May overlook important details, struggle with precision, and would need stronger planning and organizational skills.",
+      "area_of_improvement": "Focus on improving attention to detail, building basic planning skills, and enhancing follow-through to maintain consistency.",
+      "poa": "Use checklists and templates, set reminders, break down projects into steps.",
+      "recommendation": [
+        "Time Management and Prioritization",
+        "Delegation and Empowerment",
+        "Goal Setting"
+      ]
+    },
+    {
+      "code": "LTA",
+      "range": "20-0",
+      "strength": "Extremely adaptable, highly creative, and thrive in fast-paced environments, excelling in situations requiring quick thinking.",
+      "weakness": "Consistently disorganized, frequently miss deadlines, and are perceived as unreliable due to a lack of structure and follow-through.",
+      "area_of_improvement": "Develop core organizational skills, cultivate reliability, and build a more detail-oriented mindset to improve overall effectiveness.",
+      "poa": "Work with a coach to establish routines, use visual aids, seek constant feedback.",
+      "recommendation": [
+        "Time Management and Prioritization",
+        "Leading by Example (for accountability)",
+        "Goal Setting (for structure)"
+      ]
+    },
+    {
+      "code": "LTB",
+      "range": "100-80",
+      "strength": "Exceptional at fostering teamwork, empathy, and creating a positive environment. You build strong relationships and promote collaboration effectively.",
+      "weakness": "Shys away from tough decisions, prioritizing harmony over efficiency. You are likely to be overly influenced by others.",
+      "area_of_improvement": "Develop assertiveness, increase decisiveness, and practice giving constructive feedback.",
+      "poa": "Practice making timely decisions, develop an objective evaluation framework.",
+      "recommendation": [
+        "Team Management & Leadership",
+        "Giving Constructive Feedback",
+        "Conflict Resolution and Negotiation"
+      ]
+    },
+    {
+      "code": "LTB",
+      "range": "80-60",
+      "strength": "Good at balancing collaboration with independence, your actions contribute positively to team dynamics.",
+      "weakness": "May struggle to assert your ideas or avoid conflict, limiting your influence.",
+      "area_of_improvement": "Work on confidently expressing ideas, developing conflict resolution skills, and enhancing your influence.",
+      "poa": "Practice articulating ideas, role-play difficult conversations, learn conflict management techniques.",
+      "recommendation": [
+        "Communication and Active Listening",
+        "Team Management & Leadership",
+        "Conflict Resolution and Negotiation"
+      ]
+    },
+    {
+      "code": "LTB",
+      "range": "60-40",
+      "strength": "Adaptable in teams, you often balance both collaboration and autonomy effectively based on the situation.",
+      "weakness": "Inconsistent approach, often you may face difficulty choosing between collaboration and independence.",
+      "area_of_improvement": "Develop situational awareness, increase consistency, and apply collaboration or independence strategically.",
+      "poa": "Analyze team dynamics, create a decision-making framework, seek feedback on approach.",
+      "recommendation": [
+        "Leading by Example (for foundational principles)",
+        "Team Management & Leadership",
+        "Emotional Intelligence"
+      ]
+    },
+    {
+      "code": "LTB",
+      "range": "40-20",
+      "strength": "Often self-reliant, generate original ideas, and you are comfortable taking initiative.",
+      "weakness": "May overlook input, struggle with collaboration. You are likely hesitate to delegate.",
+      "area_of_improvement": "Focus on improving collaboration, seek feedback, and develop delegation skills.",
+      "poa": "Schedule team meetings, actively solicit input, practice delegating tasks.",
+      "recommendation": [
+        "Team Management & Leadership",
+        "Delegation and Empowerment",
+        "Communication and Active Listening"
+      ]
+    },
+    {
+      "code": "LTB",
+      "range": "20-0",
+      "strength": "Extremely self-driven and innovative, you take full responsibility for work and decisions.",
+      "weakness": "Deprioritizes collaboration, you often disregard input from others, and can be perceived as uncooperative.",
+      "area_of_improvement": "Develop collaboration skills, cultivate empathy, and build trust to improve team engagement.",
+      "poa": "Work with a coach, practice active listening, participate in team activities.",
+      "recommendation": [
+        "Team Management & Leadership",
+        "Emotional Intelligence",
+        "Leading by Example (for communication and empathy)"
+      ]
+    }
+  ],
+  "blindspot_interpretations": {
+    "strengths": {
+      "BSA": "You excel at fostering honest and transparent conversations, building trust within the team. This helps create a positive and open environment where everyone feels heard and valued.",
+      "BSB": "You show a high level of empathy, recognizing and addressing your team's emotional needs. This creates a supportive atmosphere and helps build stronger, more positive relationships with your team.",
+      "BSC": "You are known for being dependable and consistent in delivering on commitments. Your reliability helps build trust and ensures your team can count on you to follow through on tasks and deadlines.",
+      "BSD": "You actively seek input from others in decision-making, fostering collaboration and ensuring that diverse perspectives are considered. This approach leads to more balanced decisions and better team engagement.",
+      "BSE": "You set clear and reasonable expectations for your team, providing direction and focus. This clarity helps your team understand their goals, fostering productivity and a sense of accomplishment."
+    },
+    "weaknesses": {
+      "BSA": {
+        "text": "You sometimes avoid difficult conversations or hold back on feedback, which can create confusion or leave important issues unresolved. This leads to missed opportunities for growth and clarity.",
+        "recommendation": [
+          "Introduction to Leadership Styles (for broader leadership perspective)",
+          "Delegation and Empowerment",
+          "Decision Making & Problem Solving"
+        ]
+      },
+      "BSB": {
+        "text": "You may miss subtle emotional cues, leading to missed opportunities to address team concerns or support individuals. This can create gaps in communication, affecting team morale and trust.",
+        "recommendation": [
+          "Emotional Intelligence - Personal & Social Competences",
+          "Team Management & Leadership",
+          "Leading by Example"
+        ]
+      },
+      "BSC": {
+        "text": "At times, you may overcommit or struggle with delegation, leading to burnout or missed deadlines. This can affect team efficiency and lead to a lack of consistency in task execution.",
+        "recommendation": [
+          "Time Management and Prioritization",
+          "Leading by Example",
+          "Delegation and Empowerment"
+        ]
+      },
+      "BSD": {
+        "text": "You likely fall into the trap of making decisions without fully involving your team. This can limit creativity, reduce buy-in, and prevent your team from feeling fully empowered or engaged.",
+        "recommendation": [
+          "Decision Making & Problem Solving",
+          "Team Management & Leadership",
+          "Delegation and Empowerment"
+        ]
+      },
+      "BSE": {
+        "text": "Your expectations may be unrealistic or not fully aligned with the team’s capabilities. This can lead to confusion, frustration, and stress, making it harder for your team to achieve their goals.",
+        "recommendation": [
+          "Feedback and Goal Setting",
+          "Delegation and Empowerment",
+          "Time Management and Prioritization",
+          "Team Management"
+        ]
+      }
+    },
+    "areas_of_improvement": {
+      "BSA": {
+        "code": "AOI1",
+        "poa": "Implement regular communication channels and routines, Use communication frameworks and models (e.g., STAR, SBI). Solicit feedback on communication effectiveness. Practice empathy and adapt communication styles."
+      },
+      "BSB": {
+        "code": "AOI2",
+        "poa": "Practice empathy-building exercises. Seek feedback on interpersonal skills. Develop self-awareness and emotional regulation. Learn to recognize and respond to different emotional needs."
+      },
+      "BSC": {
+        "code": "AOI3",
+        "poa": "Implement effective time management systems. Set clear goals and track progress. Communicate proactively about deadlines and commitments. Take accountability of mistakes and learn from them."
+      },
+      "BSD": {
+        "code": "AOI4",
+        "poa": "Implement structured decision-making processes. Use techniques to encourage participation and gather input. Establish clear roles and responsibilities in decision-making. Promote a culture of psychological safety for open discussion."
+      },
+      "BSE": {
+        "code": "AOI5",
+        "poa": "Use frameworks like SMART goals. Clearly define roles, responsibilities, and deliverables. Involve team members in setting expectations. Provide regular feedback and support."
+      }
+    }
+  },
+  "emotional_intelligence_interpretations": {
+    "strengths": {
+      "ER1": "You’re proactive and plan well, ensuring smooth operations and minimizing disruptions. Your foresight helps you stay ahead and maintain a stable environment for your team.",
+      "ER2": "You manage frustration well under pressure, helping maintain a calm and productive environment for your team.",
+      "ER3": "You adjust well to emotional changes, keeping your team engaged and navigating through change smoothly.",
+      "ER4": "You are highly aware of how your emotions and actions impact others. You value feedback and are open to others' opinions, which helps build trust and effective communication within your team.",
+      "ER5": "You manage impulses well, making thoughtful and consistent decisions that promote stability and trust within your team.",
+      "ER6": "You handle stress effectively, staying calm and focused under pressure."
+    },
+    "weaknesses": {
+      "ER1": {
+        "text": "You may struggle when faced with unexpected challenges, leading to stress and reactive decisions. Lack of preparation can cause delays and disrupt workflow.",
+        "recommendation": [
+          "Introduction to Leadership Styles",
+          "Decision Making & Problem Solving"
+        ]
+      },
+      "ER2": {
+        "text": "You might show frustration in high-pressure moments, which can affect team morale and hinder productive problem-solving.",
+        "recommendation": [
+          "Team Management & Leadership",
+          "Emotional Intelligence",
+          "Conflict Resolution and Negotiation"
+        ]
+      },
+      "ER3": {
+        "text": "You may find emotional shifts challenging, especially in unpredictable situations.",
+        "recommendation": [
+          "Leading by Example",
+          "Emotional Intelligence",
+          "Change Management (Part of Introduction to Leadership Styles)"
+        ]
+      },
+      "ER4": {
+        "text": "At times, you may become overly concerned with how others perceive you, which could affect your decision-making or create inconsistency in your actions.",
+        "recommendation": [
+          "Leading by Example",
+          "Communication and Active Listening",
+          "Emotional Intelligence"
+        ]
+      },
+      "ER5": {
+        "text": "At times, you may act impulsively in stressful situations, leading to hasty decisions.",
+        "recommendation": [
+          "Delegation and Empowerment",
+          "Decision Making & Problem Solving",
+          "Constructive Feedback"
+        ]
+      },
+      "ER6": {
+        "text": "You may struggle with managing stress, leading to emotional reactions, burnout, or a decrease in performance.",
+        "recommendation": [
+          "Time Management and Prioritization",
+          "Emotional Intelligence"
+        ]
+      }
+    },
+    "areas_of_improvement": {
+      "ER1": {
+        "question_code": "ER1",
+        "area_of_improvement": "You're good at planning, but improving your adaptability will help you handle unexpected situations with greater ease, reducing stress and enhancing decision-making when surprises occur.",
+        "plan_of_action": "Actively seek out diverse viewpoints and engage in brainstorming sessions. Incorporate flexibility into your plans, with regular checkpoints to review and adjust. Challenge yourself to make quick decisions in low-stakes situations."
+      },
+      "ER2": {
+        "question_code": "ER2",
+        "area_of_improvement": "You manage frustration decently, but improving this further will enhance your composure during intense moments. This will increase your leadership credibility and improve team morale.",
+        "plan_of_action": "Schedule regular one-on-one meetings with team members to provide open space. Use \"I\" statements to express concerns and avoid blaming language. Actively listen to and acknowledge the emotions of others."
+      },
+      "ER3": {
+        "question_code": "ER3",
+        "area_of_improvement": "You adapt well but can improve in handling emotional changes. Strengthening your emotional flexibility will boost resilience, helping you and your team navigate through transitions more effectively.",
+        "plan_of_action": "Practice reframing challenges as opportunities for growth. Regularly check in with team members to gauge their emotional well-being. Be transparent about your own emotional responses in an appropriate way."
+      },
+      "ER4": {
+        "question_code": "ER4",
+        "area_of_improvement": "You are mindful of others' opinions, but balancing this with confidence in your own judgment will strengthen your leadership. Becoming less reactive to others' views will improve your decision-making.",
+        "plan_of_action": "Solicit feedback from trusted colleagues and mentors. Reflect regularly on your strengths, weaknesses, and biases. Credit others for their contributions and ideas."
+      },
+      "ER5": {
+        "question_code": "ER5",
+        "area_of_improvement": "You're generally good at impulse control, but further improvement will help you make even more deliberate decisions. Greater awareness of impulses will ensure more consistent and thoughtful leadership.",
+        "plan_of_action": "Create a safe space for experimentation and new ideas. Set aside time for brainstorming and creative thinking. Evaluate potential actions based on both logic and intuition."
+      },
+      "ER6": {
+        "question_code": "ER6",
+        "area_of_improvement": "You manage stress well, but improving your stress resilience will further enhance your leadership. Strengthening this skill will help reduce burnout, inspire your team, and increase overall productivity.",
+        "plan_of_action": "Prioritize your own stress management through exercise, mindfulness, etc. Regularly check in with team members about their workload and stress levels. Implement strategies to reduce workplace stress (e.g., flexible work arrangements)."
+      }
+    }
+  }
+}

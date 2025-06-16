@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import questionsData from '../Json/question_options.json';
-import '../Styles/Survey.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import questionsData from "../Json/question_options.json";
+import "../Styles/Survey.css";
 
 const Survey = () => {
   const navigate = useNavigate();
@@ -13,14 +13,14 @@ const Survey = () => {
 
   // State for respondent info form
   const [respondentInfo, setRespondentInfo] = useState({
-    fullName: '',
-    email: '',
-    gender: '',
-    dob: '',
-    company: '',
-    location: '',
-    tenure: '',
-    tenureManager: '',
+    fullName: "",
+    email: "",
+    gender: "",
+    dob: "",
+    company: "",
+    location: "",
+    tenure: "",
+    tenureManager: "",
   });
 
   const [showIntro, setShowIntro] = useState(true);
@@ -31,17 +31,29 @@ const Survey = () => {
 
   const currentQuestion = questions[currentIndex];
 
-  // Handle answer selection per question
-  const handleOptionSelect = (optionIndex) => {
+  // Likert scale options
+  const likertOptions = [
+    { value: 4, label: "Strongly Agree", shortLabel: "SA" },
+    { value: 3, label: "Agree", shortLabel: "A" },
+    { value: 2, label: "Disagree", shortLabel: "D" },
+    { value: 1, label: "Strongly Disagree", shortLabel: "SD" },
+  ];
+
+  // Handle answer selection per question - now handles multiple statements per question
+  const handleLikertSelect = (statementIndex, rating) => {
     setAnswers((prev) => ({
       ...prev,
-      [currentQuestion.code]: optionIndex,
+      [currentQuestion.code]: {
+        ...prev[currentQuestion.code],
+        [statementIndex]: rating,
+      },
     }));
   };
 
   // Navigate to next or previous question
   const handleNext = () => {
-    if (currentIndex < questions.length - 1) setCurrentIndex((prev) => prev + 1);
+    if (currentIndex < questions.length - 1)
+      setCurrentIndex((prev) => prev + 1);
   };
   const handlePrev = () => {
     if (currentIndex > 0) setCurrentIndex((prev) => prev - 1);
@@ -67,18 +79,23 @@ const Survey = () => {
     setSubmitting(true);
 
     const responseData = questions.map((q) => {
-      const selectedIndex = answers[q.code];
-      const selectedText =
-        selectedIndex !== undefined ? q.options[selectedIndex].text : 'Not Answered';
+      const questionAnswers = answers[q.code] || {};
+      const statementResponses = q.options.map((option, idx) => ({
+        statement: option.text,
+        description: option.description || "",
+        rating: questionAnswers[idx] || null,
+        rating_text: questionAnswers[idx]
+          ? likertOptions.find((opt) => opt.value === questionAnswers[idx])
+              ?.label
+          : "Not Answered",
+      }));
 
       return {
         question_code: q.code,
         question: q.question,
         spectrum: q.spectrum,
         range: q.range,
-        options: q.options,
-        selected_index: selectedIndex ?? null,
-        selected_text: selectedText,
+        statements: statementResponses,
       };
     });
 
@@ -88,19 +105,44 @@ const Survey = () => {
       answers: responseData,
     };
 
-    localStorage.setItem('surveyResponses', JSON.stringify(finalData));
-    navigate('/survey-response');
+    localStorage.setItem("surveyResponses", JSON.stringify(finalData));
+    navigate("/survey-response");
   };
 
   // Helper functions
-  const isSelected = (index) => answers[currentQuestion.code] === index;
+  const isStatementRated = (statementIndex, rating) => {
+    return answers[currentQuestion.code]?.[statementIndex] === rating;
+  };
 
   const getProgress = () =>
     Math.round(((currentIndex + 1) / questions.length) * 100);
 
-  const getAnsweredCount = () => Object.keys(answers).length;
+  const getAnsweredCount = () => {
+    return Object.keys(answers).filter((questionCode) => {
+      const questionAnswers = answers[questionCode];
+      if (!questionAnswers || typeof questionAnswers !== "object") return false;
 
-  const canProceed = () => answers[currentQuestion.code] !== undefined;
+      // Check if all statements in the question are answered
+      const question = questions.find((q) => q.code === questionCode);
+      if (!question) return false;
+
+      return question.options.every(
+        (_, idx) =>
+          questionAnswers[idx] !== undefined && questionAnswers[idx] !== null
+      );
+    }).length;
+  };
+
+  const canProceed = () => {
+    const questionAnswers = answers[currentQuestion.code];
+    if (!questionAnswers || typeof questionAnswers !== "object") return false;
+
+    // Check if all statements are answered
+    return currentQuestion.options.every(
+      (_, idx) =>
+        questionAnswers[idx] !== undefined && questionAnswers[idx] !== null
+    );
+  };
 
   const goToQuestion = (index) => setCurrentIndex(index);
 
@@ -109,7 +151,7 @@ const Survey = () => {
 
   // Check if all required respondent fields are filled and valid email
   const allFieldsFilled =
-    Object.values(respondentInfo).every((val) => val.trim() !== '') &&
+    Object.values(respondentInfo).every((val) => val.trim() !== "") &&
     isEmailValid;
 
   // Render respondent info form before survey starts
@@ -122,10 +164,10 @@ const Survey = () => {
         </header>
 
         <section className="survey-question-card">
-          <div className="options-grid">
+          <div className="respondent-form-grid">
             {/* Full Name */}
-            <div className="option-card">
-              <label htmlFor="fullName" className="option-title">
+            <div className="form-field">
+              <label htmlFor="fullName" className="field-label">
                 Full Name *
               </label>
               <input
@@ -135,14 +177,14 @@ const Survey = () => {
                 placeholder="Enter your full name"
                 value={respondentInfo.fullName}
                 onChange={handleInputChange}
-                className="option-input"
+                className="field-input"
                 autoComplete="name"
               />
             </div>
 
             {/* Email */}
-            <div className="option-card">
-              <label htmlFor="email" className="option-title">
+            <div className="form-field">
+              <label htmlFor="email" className="field-label">
                 Official Email ID *
               </label>
               <input
@@ -152,19 +194,19 @@ const Survey = () => {
                 placeholder="Enter your email address"
                 value={respondentInfo.email}
                 onChange={handleInputChange}
-                className="option-input"
+                className="field-input"
                 autoComplete="email"
               />
-              {!isEmailValid && respondentInfo.email.trim() !== '' && (
-                <div className="validation-message" style={{ color: '#e74c3c', fontSize: '0.85rem', marginTop: 4 }}>
+              {!isEmailValid && respondentInfo.email.trim() !== "" && (
+                <div className="validation-message">
                   Please enter a valid email address
                 </div>
               )}
             </div>
 
             {/* Gender */}
-            <div className="option-card">
-              <label htmlFor="gender" className="option-title">
+            <div className="form-field">
+              <label htmlFor="gender" className="field-label">
                 Gender *
               </label>
               <select
@@ -172,7 +214,7 @@ const Survey = () => {
                 name="gender"
                 value={respondentInfo.gender}
                 onChange={handleInputChange}
-                className="option-input"
+                className="field-input"
               >
                 <option value="" disabled>
                   Select gender
@@ -184,24 +226,24 @@ const Survey = () => {
             </div>
 
             {/* Date of Birth */}
-            <div className="option-card">
-              <label htmlFor="dob" className="option-title">
+            <div className="form-field">
+              <label htmlFor="dob" className="field-label">
                 Date of Birth *
               </label>
               <input
                 id="dob"
                 name="dob"
                 type="date"
-                max={new Date().toISOString().split('T')[0]}
+                max={new Date().toISOString().split("T")[0]}
                 value={respondentInfo.dob}
                 onChange={handleInputChange}
-                className="option-input"
+                className="field-input"
               />
             </div>
 
             {/* Company */}
-            <div className="option-card">
-              <label htmlFor="company" className="option-title">
+            <div className="form-field">
+              <label htmlFor="company" className="field-label">
                 Company Name *
               </label>
               <input
@@ -211,14 +253,14 @@ const Survey = () => {
                 placeholder="Enter your company name"
                 value={respondentInfo.company}
                 onChange={handleInputChange}
-                className="option-input"
+                className="field-input"
                 autoComplete="organization"
               />
             </div>
 
             {/* Location */}
-            <div className="option-card">
-              <label htmlFor="location" className="option-title">
+            <div className="form-field">
+              <label htmlFor="location" className="field-label">
                 Location *
               </label>
               <input
@@ -228,14 +270,14 @@ const Survey = () => {
                 placeholder="Enter your location"
                 value={respondentInfo.location}
                 onChange={handleInputChange}
-                className="option-input"
+                className="field-input"
                 autoComplete="address-level2"
               />
             </div>
 
             {/* Tenure */}
-            <div className="option-card">
-              <label htmlFor="tenure" className="option-title">
+            <div className="form-field">
+              <label htmlFor="tenure" className="field-label">
                 Tenure (in years) *
               </label>
               <input
@@ -245,13 +287,13 @@ const Survey = () => {
                 placeholder="e.g., 2.5 years"
                 value={respondentInfo.tenure}
                 onChange={handleInputChange}
-                className="option-input"
+                className="field-input"
               />
             </div>
 
             {/* Tenure as Manager */}
-            <div className="option-card">
-              <label htmlFor="tenureManager" className="option-title">
+            <div className="form-field">
+              <label htmlFor="tenureManager" className="field-label">
                 Tenure as Manager (in years) *
               </label>
               <input
@@ -261,16 +303,13 @@ const Survey = () => {
                 placeholder="e.g., 1.5 years"
                 value={respondentInfo.tenureManager}
                 onChange={handleInputChange}
-                className="option-input"
+                className="field-input"
               />
             </div>
           </div>
 
           {!allFieldsFilled && (
-            <div
-              className="validation-message"
-              style={{ color: '#e74c3c', textAlign: 'center', marginTop: 16, fontSize: '0.9rem' }}
-            >
+            <div className="form-validation-message">
               Please fill in all required fields correctly to continue
             </div>
           )}
@@ -278,10 +317,11 @@ const Survey = () => {
 
         <footer className="navigation-footer">
           <button
-            className={`nav-button submit-button ${!allFieldsFilled ? 'disabled' : ''}`}
+            className={`nav-button submit-button ${
+              !allFieldsFilled ? "disabled" : ""
+            }`}
             disabled={!allFieldsFilled}
             onClick={handleStartSurvey}
-            style={{ opacity: allFieldsFilled ? 1 : 0.6, cursor: allFieldsFilled ? 'pointer' : 'not-allowed' }}
           >
             Start Survey →
           </button>
@@ -306,9 +346,9 @@ const Survey = () => {
           {questions.map((_, idx) => (
             <button
               key={idx}
-              className={`question-dot ${idx === currentIndex ? 'active' : ''} ${
-                answers[questions[idx].code] !== undefined ? 'answered' : ''
-              }`}
+              className={`question-dot ${
+                idx === currentIndex ? "active" : ""
+              } ${getAnsweredCount() > idx ? "answered" : ""}`}
               onClick={() => goToQuestion(idx)}
               title={`Question ${idx + 1}`}
               type="button"
@@ -326,41 +366,82 @@ const Survey = () => {
         <div className="question-header">
           <span className="question-code">{currentQuestion.code}</span>
           {currentQuestion.spectrum && (
-            <span className="question-spectrum">{currentQuestion.spectrum}</span>
+            <span className="question-spectrum">
+              {currentQuestion.spectrum}
+            </span>
           )}
         </div>
 
         <h3 className="question-text">{currentQuestion.question}</h3>
 
-        {currentQuestion.range && <p className="question-range">{currentQuestion.range}</p>}
+        {currentQuestion.range && (
+          <p className="question-range">{currentQuestion.range}</p>
+        )}
 
-        <div className="options-grid">
-          {currentQuestion.options.map((option, idx) => (
-            <label
-              key={idx}
-              className={`option-card ${isSelected(idx) ? 'selected' : ''}`}
-            >
-              <input
-                type="radio"
-                name={currentQuestion.code}
-                value={idx}
-                checked={isSelected(idx)}
-                onChange={() => handleOptionSelect(idx)}
-                className="option-input"
-              />
-              <div className="option-content">
-                <div className="option-radio">
-                  <div className="radio-inner"></div>
+        {/* Enhanced Likert Scale Layout */}
+        <div className="likert-container">
+          {/* Likert Scale Header */}
+          <div className="likert-header">
+            <div className="statement-header">Statement</div>
+            <div className="rating-headers">
+              {likertOptions.map((option) => (
+                <div key={option.value} className="rating-header">
+                  <span className="rating-full">{option.label}</span>
+                  <span className="rating-short">{option.shortLabel}</span>
                 </div>
-                <div className="option-text">
-                  <div className="option-title">{option.text}</div>
+              ))}
+            </div>
+          </div>
+
+          {/* Statements with Rating Options */}
+          <div className="statements-container">
+            {currentQuestion.options.map((option, statementIdx) => (
+              <div key={statementIdx} className="statement-row">
+                <div className="statement-content">
+                  <div className="statement-text">{option.text}</div>
                   {option.description && (
-                    <div className="option-description">{option.description}</div>
+                    <div className="statement-description">
+                      {option.description}
+                    </div>
                   )}
                 </div>
+
+                <div className="rating-options">
+                  {likertOptions.map((likertOption) => (
+                    <div key={likertOption.value} className="rating-option">
+                      <label className="rating-label">
+                        <input
+                          type="radio"
+                          name={`${currentQuestion.code}_${statementIdx}`}
+                          value={likertOption.value}
+                          checked={isStatementRated(
+                            statementIdx,
+                            likertOption.value
+                          )}
+                          onChange={() =>
+                            handleLikertSelect(statementIdx, likertOption.value)
+                          }
+                          className="rating-input"
+                        />
+                        <div
+                          className={`rating-circle ${
+                            isStatementRated(statementIdx, likertOption.value)
+                              ? "selected"
+                              : ""
+                          }`}
+                        >
+                          <div className="rating-inner"></div>
+                        </div>
+                        <span className="rating-tooltip">
+                          {likertOption.label}
+                        </span>
+                      </label>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </label>
-          ))}
+            ))}
+          </div>
         </div>
 
         <div className="answer-summary">
@@ -418,7 +499,16 @@ const Survey = () => {
         <button
           className="quick-action"
           onClick={() => {
-            const nextUnanswered = questions.findIndex((q) => answers[q.code] === undefined);
+            const nextUnanswered = questions.findIndex((q) => {
+              const questionAnswers = answers[q.code];
+              if (!questionAnswers || typeof questionAnswers !== "object")
+                return true;
+              return !q.options.every(
+                (_, idx) =>
+                  questionAnswers[idx] !== undefined &&
+                  questionAnswers[idx] !== null
+              );
+            });
             if (nextUnanswered !== -1) goToQuestion(nextUnanswered);
           }}
           disabled={getAnsweredCount() === questions.length}
