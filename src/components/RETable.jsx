@@ -32,14 +32,13 @@ const RecommendationTable = ({ surveyData }) => {
         return {
           code,
           percentage,
-          recommendation: entry?.recommendation
-            ? entry.recommendation.join("\n")
-            : "No Recommendation found",
+          recommendation:
+            entry?.recommendation?.join("\n") || "No Recommendation found",
         };
       }
     );
 
-    // 2. Blindspot Recommendations
+    // 2. Blindspot Recommendations (Bottom 2 performers)
     const blindspotGroups = {
       BSA: ["BS1", "BS2", "BS3"],
       BSB: ["BS4", "BS5", "BS6"],
@@ -55,34 +54,32 @@ const RecommendationTable = ({ surveyData }) => {
       }))
       .sort((a, b) => b.percentage - a.percentage); // descending order
 
-    // Select rank 5 and rank 4 for blindspot: indices 4 and 3 (zero-based)
     const blindspotSelected = [blindspotRanked[4], blindspotRanked[3]]
       .filter(Boolean)
-      .map(({ code, percentage }) => ({
-        code,
-        percentage,
-        recommendation:
-          interpretationData.blindspot_interpretations?.recommendations?.[
-            code
-          ]?.join("\n") ||
-          interpretationData.blindspot_interpretations?.recommendation?.[
-            code
-          ]?.join("\n") || // fallback if plural vs singular
-          "No Recommendation found",
-      }));
+      .map(({ code, percentage }) => {
+        const recs =
+          interpretationData.blindspot_interpretations?.weaknesses?.[code]
+            ?.recommendation;
 
-    // 3. Emotional Intelligence Recommendations
+        return {
+          code,
+          percentage,
+          recommendation: Array.isArray(recs)
+            ? recs.join("\n")
+            : recs || "No Recommendation found",
+        };
+      });
+
+    // 3. Emotional Intelligence Recommendations (Bottom 2 from Top 6)
     const erDataSorted = surveyData
       .filter((item) => item.questionCode.startsWith("ER"))
       .sort((a, b) => b.percentage - a.percentage);
 
-    // Map with rank
     const erDataWithRank = erDataSorted.map((item, index) => ({
       ...item,
       rank: index + 1,
     }));
 
-    // Select ranks 6 and 5 from emotional intelligence (6 then 5)
     const targetRanks = [6, 5];
     const erSelected = targetRanks
       .map((rank) => erDataWithRank.find((item) => item.rank === rank))
@@ -90,18 +87,14 @@ const RecommendationTable = ({ surveyData }) => {
       .map((item) => {
         const recs =
           interpretationData.emotional_intelligence_interpretations
-            ?.recommendation?.[item.questionCode] ||
-          interpretationData.emotional_intelligence_interpretations
-            ?.recommendations?.[item.questionCode];
-
-        const recommendation = Array.isArray(recs)
-          ? recs.join("\n")
-          : recs || "No Recommendation found";
+            ?.weaknesses?.[item.questionCode]?.recommendation;
 
         return {
           code: item.questionCode,
           percentage: item.percentage,
-          recommendation,
+          recommendation: Array.isArray(recs)
+            ? recs.join("\n")
+            : recs || "No Recommendation found",
         };
       });
 
